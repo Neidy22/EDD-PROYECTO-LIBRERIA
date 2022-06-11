@@ -1,15 +1,4 @@
-class Node{
 
-    constructor(data){
-        this.value=data
-        this.next=null
-        this.previous=null
-        this.id=0
-        
-    }
-
-
-}
 
 class DoubleCircularList{
     constructor(){

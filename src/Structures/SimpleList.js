@@ -130,12 +130,13 @@ class SimpleList{
         var rela=""
         var labels=""
         var g=0
+        
         if (this.first!=null){
                
             while(aux.right!=null){            
                 g=aux.id+1
                 rela+="    nodeR"+aux.id+" -> nodeR"+aux.right.id+";\n"
-                labels+="    nodeR"+aux.id+" [shape=box, label=\""+aux.id+"\",weight="+g+"];\n"
+                labels+="    nodeR"+aux.id+" [ shape=box, label=\""+aux.id+"\",weight="+g+"];\n"
                 aux=aux.right
             }
         }
@@ -154,7 +155,7 @@ class SimpleList{
         var aux=this.first
         var rela=""
         var labels=""
-
+        
         if (this.first!=null){
 
             while(aux.down!=null){
@@ -174,18 +175,22 @@ class SimpleList{
 
 }
 
+export default SimpleList;
 
+/*
 
 var filas=new SimpleList()
 
-var uno=1
+var uno=20
 var dos=2
 var tres=3
 var cuatro=4
 var cinco=5
+var seis=45
 filas.addNewOrdered(uno)
 filas.addNewOrdered(dos)
 filas.addNewOrdered(tres)
 filas.addNewOrdered(cuatro)
 filas.addNewOrdered(cinco)
-filas.graph()
+filas.addNewOrdered(seis)
+filas.graph()*/

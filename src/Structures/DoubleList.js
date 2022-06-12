@@ -1,21 +1,7 @@
-class Node{
+import Node from "../Objects/Node.js"
+import Book from "../Objects/Book.js"
 
-    constructor(data){
-        this.data=data
-        this.next=null
-        this.previous=null
-        this.top=null
-        this.down=null
-        this.right=null
-        this.left=null
-        this.id=0
-        
-    }
-
-
-}
-
-class DoubleList extends Node{
+class DoubleList{
     
     constructor(){
         this.first=null
@@ -148,7 +134,7 @@ class DoubleList extends Node{
         var labels=""
         var aux=this.first
         while(aux.next!=null){
-            relas+="    node"+aux.data.cantidad+" -> node"+aux.next.data.cantidad+" -> node"+aux.data.cantidad+";\n"
+            relas+="    node"+aux.data.cantidad+" -> node"+aux.next.data.cantidad+"[dir=both];\n"
             labels+="    node"+aux.data.cantidad+" [label=\""+aux.data.cantidad+"\"];\n"
             aux=aux.next
         }
@@ -175,18 +161,18 @@ class DoubleList extends Node{
      
         var rela=""
         var labels=""
-    
+       
         var g=0
         if (this.first!=null){
           
             while(aux.next!=null){
                 g=aux.id+1
-                rela+="    node"+aux.name+" -> node"+aux.next.name+" -> node"+aux.name+";\n"             
-                labels+="    node"+aux.name+" [label=\"\", shape=box,  style=filled, fillcolor=\""+aux.color+"\" , weight="+g+"];\n" 
+                rela+="    node"+aux.name+" -> node"+aux.next.name+"[dir=both];\n"             
+                labels+="    node"+aux.name+" [label=\""+aux.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+"];\n" 
                 aux=aux.next;
             }     
             g=aux.id+1
-            labels+="    node"+aux.name+" [label=\"\", shape=box,  style=filled, fillcolor=\""+aux.color+"\", weight="+g+"];\n" 
+            labels+="    node"+aux.name+" [label=\""+aux.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\", weight="+g+"];\n" 
         }
         
        
@@ -204,12 +190,12 @@ class DoubleList extends Node{
      
         var rela=""
         var labels=""
-   
+        
         if (this.first!=null){
 
             while(aux.down!=null){
              
-                rela+="    node"+aux.name+" -> node"+aux.down.name+" -> node"+aux.name+";\n"
+                rela+="    node"+aux.name+" -> node"+aux.down.name+"[dir=both];\n"
                 aux=aux.down
             }
            
@@ -229,21 +215,12 @@ class DoubleList extends Node{
 
 }
 
-class User {
-    constructor(_dpi,_nombreCompleto,_nombreUsuario,_correo,_rol,_contrasenia,_telefono){
-        this.dpi=_dpi
-        this.name=_nombreCompleto
-        this.userName=_nombreUsuario
-        this.email=_correo
-        this.rol=_rol
-        this.password=_contrasenia
-        this.telephone=_telefono
-        this.cantidad=0
-    }
 
-}
+export default DoubleList;
 
 
+
+/*
 var usuarios = new DoubleList()
 //  constructor(_dpi,_nombreCompleto,_nombreUsuario,_correo,_rol,_contrasenia,_telefono){
 const us1= new User("123456846451","neidy flores","nf","neidy@gmail.com","cliente","123","38187749")
@@ -264,4 +241,4 @@ usuarios.addNew(us2)
 usuarios.addNew(us3)
 usuarios.addNew(us4)
 usuarios.addNew(us5)
-usuarios.graph()
+usuarios.graph()*/

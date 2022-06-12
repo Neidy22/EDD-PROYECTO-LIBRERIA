@@ -1,3 +1,8 @@
+import Node from "../Objects/Node.js";
+import Book from "../Objects/Book.js";
+import SimpleList from "./SimpleList.js";
+import DoubleList from "./DoubleList.js";
+
 class SparseMatrix{
     constructor(){
         this.rows=new SimpleList()
@@ -10,6 +15,7 @@ class SparseMatrix{
 
         this.insertColumn(column,row,nom,book)
         this.insertRow(row,column,nom,book)
+        console.log("Insertado")
 
 
     }
@@ -21,7 +27,7 @@ class SparseMatrix{
         var aux=this.columns.first
 
         //recorro la lista simple para encontrar la columna
-        while(aux.data.id<column){
+        while(aux.id<column){
             aux=aux.right
         }
 
@@ -42,7 +48,7 @@ class SparseMatrix{
         }
         var aux=this.rows.first
         //recorro la lista simple para encontrar la fila
-        while(aux.data.id<row){
+        while(aux.id<row){
             aux=aux.down
         }
 
@@ -73,11 +79,56 @@ class SparseMatrix{
         }
     }
 
+    ranks(name){
+        
+        var m=this.matrix
+        var aux=this.columns.first
+        
+        var ranks=""
+        //saco la cabecera
+        ranks+="    {rank = same; \""+name+"\";"
+        while(aux!=null){
+            ranks+="\"nodeR"+aux.id+"\";"
+            aux=aux.right 
+        }
+        ranks+="}\n"
+        
+        //saco las filas
+        var aux2=this.rows.first
+        var n=0
+        while(aux2!=null){
+            
+      
+            var f=aux2;
+            ranks+="    {rank = same; \"nodeD"+aux2.id+"\";"
+            var aux3=f.first
+     
+            while(aux3!=null){
+                ranks+="\"node"+aux3.name+"\";"
+                aux3=aux3.next
+            }
+            
+            
+              
+            ranks+="}\n"
+            aux2=aux2.down
+            
+        }
+        
+           
+        return ranks
+        
+    
+    }
+
     graph(){
         var text="digraph MatrizDispersa{\n";
-        var name="MatrizDispersa"
+        var name="terror"
+        text+="nodesep=0.6;\n"
+        text+="ranksep=0.6;\n"
+        
         //text+="    size=\"2.5,2.5\";\n";
-        text+=ranks(name);
+        text+=this.ranks(name);
         //relaciono el nodo raiz con los nodos 0,0
         var rela="";
         rela+="    "+name+" -> "+"nodeR"+this.columns.first.id+";\n";
@@ -92,16 +143,16 @@ class SparseMatrix{
         var aux=this.rows.first;
         var n=0;
         while(aux!=null){
-            var n1="Fila"+n;
+            //var n1="Fila"+n;
            
             var f=aux;
             
             if(f.size>0){
-                rela+="    nodeD"+aux.id+" -> node"+f.first.name+" -> nodeD"+aux.id+";\n";
+                rela+="    nodeD"+aux.id+" -> node"+f.first.name+"[dir=both];\n";
                 text+=f.graphN();
             }
             
-            n++;
+           // n++;
             aux=aux.down;
             
         }
@@ -115,7 +166,7 @@ class SparseMatrix{
             var f=aux2;
             var g=aux2.id+1;
             if(f.size>0){
-                rela+="    nodeR"+aux2.id+" -> node"+f.first.name+" -> nodeR"+aux2.id+";\n";
+                rela+="    nodeR"+aux2.id+" -> node"+f.first.name+"[dir=both];\n";
                 text+=f.graphTB();
             }
             
@@ -125,7 +176,7 @@ class SparseMatrix{
         }
     
         text+=rela;
-        text+="    "+name+"[shape=Msquare,group=0];\n";
+        text+="    "+name+"[shape=box,group=0];\n";
         text+="}";
 
 
@@ -138,3 +189,19 @@ class SparseMatrix{
 
     }
 }
+
+//constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
+var terror=new SparseMatrix()
+var uno=new Book(94615465,"Strickland Shelton","Zounds viendo\n como acomoda",2,5,10,187,"fantasia")
+var dos=new Book(54212515,"Collins Cohen","Isosure",7,9,1,214,"Thriller")
+var tres=new Book(5641564,"Williamson Lynn","Crustatia",5,6,2,191,"Fantasia")
+var unoo=new Book(94615465,"Strickland Shelton","Zombie",2,6,10,187,"fantasia")
+var doso=new Book(54212515,"Collins Cohen","IRead",7,9,2,214,"Thriller")
+var treso=new Book(5641564,"Williamson Lynn","Codier",5,6,3,191,"Fantasia")
+terror.insertNode(uno.column,uno.row,uno)
+terror.insertNode(dos.column,dos.row,dos)
+terror.insertNode(tres.column,tres.row,tres)
+terror.insertNode(unoo.column,unoo.row,unoo)
+terror.insertNode(doso.column,doso.row,doso)
+terror.insertNode(treso.column,treso.row,treso)
+terror.graph()

@@ -1,8 +1,8 @@
-class Book extends Node{
+class Book {
     constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
         this.isbn=_isbn
         this.nameA=_nombreA
-        this.nameB=_nombreB
+        this.nameBook=_nombreB
         this.quantity=_cantidad
         this.row=_fila
         this.column=_columna
@@ -12,3 +12,5 @@ class Book extends Node{
     }
 
 }
+
+export default Book;

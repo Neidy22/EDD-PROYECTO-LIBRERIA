@@ -15,14 +15,14 @@ class Node{
 
 }
 
-class DoubleList{
+class DoubleList extends Node{
     
     constructor(){
         this.first=null
         this.size=0
     }
 
-    addNew(data){
+    addNewDesOrdered(data){
         var nuevo= new Node(data)
         if(this.first==null){
             this.first=nuevo
@@ -60,6 +60,82 @@ class DoubleList{
         this.size++
     }
 
+    addNewAsOrdered(nuevo){
+        
+        if (this.first==null){
+            this.first=nuevo
+            
+        }else if(nuevo.id< this.first.id){
+           
+            this.first.previous=nuevo
+            nuevo.next=this.first
+            this.first=nuevo
+            
+        }else{
+            var aux=this.first
+            var prev=this.first
+            while(nuevo.id>aux.id && aux.next!=null){
+                prev=aux
+                aux=aux.next
+                
+            }
+            
+            if(nuevo.id>aux.id){
+                aux.next=nuevo
+                nuevo.previous=aux  
+            }
+            
+            else if(nuevo.id<aux.id){
+                nuevo.next=aux
+                nuevo.previous=aux.previous
+                
+                aux.previous.next=nuevo
+                aux.previous=nuevo
+            }
+        
+        }
+        
+        this.size++
+    }
+
+    addNewTB(nuevo){
+        if (this.first==null){
+            this.first=nuevo
+            
+        }else if(nuevo.id< this.first.id){
+            //cambio los previous por top y los next por down
+            
+            this.first.top=nuevo
+            nuevo.down=this.first
+            this.first=nuevo
+            
+        }else{
+            var aux=this.first
+            var prev=this.first
+            while(nuevo.id>aux.id && aux.down!=null){
+                prev=aux
+                aux=aux.down
+                
+            }
+            
+            if(nuevo.id>aux.id){
+                aux.down=nuevo
+                nuevo.top=aux
+            }
+            
+            else if(nuevo.id<aux.id){
+                nuevo.down=aux
+                nuevo.top=aux.top
+                
+                aux.top.down=nuevo
+                aux.top=nuevo
+            }
+        
+        }
+        
+        this.size++
+    }
+
     graph(){
         var doteCode="digraph ListaDoble {\n";
         doteCode+="rankdir=LR;\n";
@@ -90,6 +166,63 @@ class DoubleList{
 
 
 
+    }
+
+    graphN(){
+        var text=" "
+      
+        var aux=this.first
+     
+        var rela=""
+        var labels=""
+    
+        var g=0
+        if (this.first!=null){
+          
+            while(aux.next!=null){
+                g=aux.id+1
+                rela+="    node"+aux.name+" -> node"+aux.next.name+" -> node"+aux.name+";\n"             
+                labels+="    node"+aux.name+" [label=\"\", shape=box,  style=filled, fillcolor=\""+aux.color+"\" , weight="+g+"];\n" 
+                aux=aux.next;
+            }     
+            g=aux.id+1
+            labels+="    node"+aux.name+" [label=\"\", shape=box,  style=filled, fillcolor=\""+aux.color+"\", weight="+g+"];\n" 
+        }
+        
+       
+        text+=labels
+        text+=rela
+       
+        return text
+
+        
+    }
+
+    graphTB(){
+        var text=""
+        var aux=this.first
+     
+        var rela=""
+        var labels=""
+   
+        if (this.first!=null){
+
+            while(aux.down!=null){
+             
+                rela+="    node"+aux.name+" -> node"+aux.down.name+" -> node"+aux.name+";\n"
+                aux=aux.down
+            }
+           
+            
+        }
+        
+
+        text+=labels
+        text+=rela
+     
+        return text
+
+        
     }
 
 

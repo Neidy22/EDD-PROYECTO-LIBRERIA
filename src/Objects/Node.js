@@ -9,8 +9,13 @@ class Node{
         this.right=null
         this.left=null
         this.id=0
+        this.name=null
         
     }
 
-
+    setName(nombre){
+        this.name=nombre
+    }
 }
+
+export default Node;

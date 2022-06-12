@@ -164,15 +164,21 @@ class DoubleList{
        
         var g=0
         if (this.first!=null){
-          
+            var labelName=""
             while(aux.next!=null){
+                if(aux.value!=null){
+                    labelName=aux.value.nameBook
+                }else{
+                    labelName=""
+                }
+
                 g=aux.id+1
                 rela+="    node"+aux.name+" -> node"+aux.next.name+"[dir=both];\n"             
-                labels+="    node"+aux.name+" [label=\""+aux.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+"];\n" 
+                labels+="    node"+aux.name+" [label=\""+labelName+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+"];\n" 
                 aux=aux.next;
             }     
             g=aux.id+1
-            labels+="    node"+aux.name+" [label=\""+aux.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\", weight="+g+"];\n" 
+            labels+="    node"+aux.name+" [label=\""+labelName+"\", shape=box,  style=filled, fillcolor=\"white\", weight="+g+"];\n" 
         }
         
        

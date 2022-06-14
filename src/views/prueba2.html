@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Read Text File Tutorial</title>
+  </head>
+  <body>
+    <input type="file" name="inputFile" id="inputFile">
+    <br>
+    <pre id="output">Aqui va la info</pre>
+    <div id="lienzo"></div>
+    
+
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <script src="noModule.js" nomodule></script>
+    
+
+    <script type="module">
+        import SparseMatrix from "../Structures/SparseMatrix.js";
+        import Book from "../Objects/Book.js";
+        //var matrizO=new OrthogonalMatrix()
+        var matrizD=new SparseMatrix()
+        //activo la funcionalidad para detectar el archivo con el input
+      document.getElementById('inputFile').addEventListener('change', function() {
+        
+        //obtengo el archivo
+        var file = new FileReader();
+        //cargo el archivo
+        file.onload = () => {
+          //document.getElementById('output').textContent = file.result;
+
+          //parseo el archivo para poder extraer los datos
+          var autorsData=JSON.parse(file.result)
+          //mando a extraer los datos para mostrarlos en el html
+          renderHTML(autorsData)
+        }
+
+        file.readAsText(this.files[0]);
+
+
+      });
+
+      function renderHTML(data){
+        var htmlString="";
+
+        for( var i=0; i<data.length; i++){
+            //htmlString+="<h1>"+data[i].nombre_autor+" "+data[i].correo+"</h1>";
+            //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
+            var nuevo=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
+            matrizD.insertNode(nuevo.column,nuevo.row,nuevo)   
+        }
+        document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
+        matrizD.graph()
+
+      }
+      
+
+
+
+    </script>
+
+
+  </body>
+</html>

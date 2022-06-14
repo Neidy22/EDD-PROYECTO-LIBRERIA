@@ -190,7 +190,10 @@ class SparseMatrix{
     }
 }
 
-//constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
+export default SparseMatrix;
+
+//constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria)
+/*
 var terror=new SparseMatrix()
 var uno=new Book(94615465,"Strickland Shelton","Zounds viendo\n como acomoda",2,5,10,187,"fantasia")
 var dos=new Book(54212515,"Collins Cohen","Isosure",7,9,1,214,"Thriller")
@@ -205,3 +208,4 @@ terror.insertNode(unoo.column,unoo.row,unoo)
 terror.insertNode(doso.column,doso.row,doso)
 terror.insertNode(treso.column,treso.row,treso)
 terror.graph()
+*/

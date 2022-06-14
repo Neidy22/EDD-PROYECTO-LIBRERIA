@@ -73,7 +73,7 @@ class Queue{
     }
 }
 
-
+/*
 var pedidos=new Queue()
 var uno= new Solicitud("Jose","Escudo",1)
 var dos= new Solicitud("Jose","Camilo",1)
@@ -85,4 +85,4 @@ pedidos.enqueue(dos)
 pedidos.enqueue(tres)
 pedidos.enqueue(cuatro)
 pedidos.enqueue(cinco)
-pedidos.graph()
+pedidos.graph()*/

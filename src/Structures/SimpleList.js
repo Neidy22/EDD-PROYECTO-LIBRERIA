@@ -7,6 +7,22 @@ class SimpleList{
 
     }
 
+    addNewD(data){
+        var nuevo=new Node(data)
+        nuevo.id=this.size
+        if(this.first==null){
+            this.first=nuevo
+        }else{
+            var aux=this.first
+            while(aux.down!=null){
+                aux=aux.down
+            }
+            aux.down=nuevo
+        }
+        this.size++
+
+    }
+
     addNewOrdered(data){
         var nuevo=new Node(data)
         nuevo.id=data
@@ -120,6 +136,9 @@ class SimpleList{
        
         this.size++
     }
+
+
+
 
 
     graphR(){

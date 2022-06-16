@@ -1,4 +1,5 @@
-
+import Node from "../Objects/Node.js"
+import SimpleList from "../Structures/SimpleList.js"
 
 class DoubleCircularList{
     constructor(){
@@ -34,12 +35,14 @@ class DoubleCircularList{
         this.size++
         aux.id=this.size
 
-    }
-    */
+    }*/
+    
 
 
     addNew(data){
         var aux=new Node(data)
+        aux.down=new SimpleList()
+
         if(this.first==null){
             this.first=aux
             this.last=aux
@@ -209,10 +212,56 @@ class DoubleCircularList{
 
     }
 
+    graph(){
+        var doteCode="digraph ListaDobleCircular {\n";
+        doteCode+="rankdir=LR;\n";
+        doteCode+="     fontname=\"Forte\";\n"
+        doteCode+="     fontsize=30;\n"
+        doteCode+="node[shape=box, fontsize=14];\n";
+
+        var aux=this.first
+        var rela=""
+        var label=""
+        var p=0
+        if(this.first!=null){
+            do{
+
+                rela+="   node"+aux.value.dpi+" -> node"+aux.next.value.dpi+"[dir=both];\n"
+                label+="    node"+aux.value.dpi+"[label=\""+aux.value.name+"\"];\n"
+                //verifico si tiene libros comprados
+                if(aux.down.first!=null){
+                    rela+="   node"+aux.value.dpi+" -> nodeD"+aux.down.first.id+";\n";
+                    rela+=aux.down.graphDown(p);
+                }
+
+                aux=aux.next;
+                p++;
+    
+            }while(aux!=this.first)
+    
+
+        }
+
+        doteCode+=rela
+        doteCode+=label
+        doteCode+="}"
+
+        //console.log(doteCode)
+
+        d3.select('#Circular').graphviz()
+        .width(1600)
+        .height(600)
+        .renderDot(doteCode);
+       
+        
+    }
 
 
 }
 
+export default DoubleCircularList;
+
+/*
 var lista=new DoubleCircularList()
 var a="2"
 var b="0"
@@ -233,3 +282,4 @@ lista.addNew(g)
 lista.addNew(h)
 lista.addNew(i)
 lista.graficar()
+*/

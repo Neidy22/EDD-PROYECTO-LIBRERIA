@@ -1,4 +1,4 @@
-export default class User extends Node {
+class User {
     constructor(_dpi,_nombreCompleto,_nombreUsuario,_correo,_rol,_contrasenia,_telefono){
         this.dpi=_dpi
         this.name=_nombreCompleto
@@ -11,3 +11,4 @@ export default class User extends Node {
     }
 
 }
+export default User;

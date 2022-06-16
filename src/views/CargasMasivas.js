@@ -1,0 +1,136 @@
+import BinaryTree from "../Structures/BinaryTree.js";
+import SparseMatrix from "../Structures/SparseMatrix.js";
+import OrthogonalMatrix from "../Structures/OrthogonalMatrix.js"
+import DoubleCircularList from "../Structures/DoubleCircularList.js"
+import Autor from "../Objects/Autor.js";
+import Book from "../Objects/Book.js";
+import User from "../Objects/User.js";
+
+    const matrizO=new OrthogonalMatrix()
+    const matrizD=new SparseMatrix()
+    const arbol=new BinaryTree()
+    const usuarios=new DoubleCircularList()
+
+
+    //carga masiva de los autores
+    document.getElementById('cmAutors').addEventListener('change', function() {
+        
+        //obtengo el archivo
+        let fileAut = new FileReader();
+        //cargo el archivo
+        fileAut.onload = () => {
+
+          //parseo el archivo para poder extraer los datos
+          let autorsData=JSON.parse(fileAut.result)
+          //mando a extraer los datos para mostrarlos en el html
+          renderHTML2(autorsData)
+        }
+
+        fileAut.readAsText(this.files[0]);
+
+
+    });
+
+    function renderHTML2(data){
+        let htmlStringA="";
+        let aux;
+        for( let i=0; i<data.length; i++){
+            //constructor(_dpi,_name,_email,_telephone,_adress,_bio)
+            aux=new Autor(data[i].dpi,data[i].nombre_autor,data[i].correo,data[i].telefono,data[i].direccion,data[i].biografia);
+            arbol.insertN(aux)
+            
+                
+        }
+        document.getElementById('output').insertAdjacentHTML('beforeend',htmlStringA)
+        arbol.graph()
+
+    }
+
+
+    //carga masiva de los libros
+    document.getElementById('cmBook').addEventListener('change', function() {
+        
+        //obtengo el archivo
+        let file = new FileReader();
+        //cargo el archivo
+        file.onload = () => {
+          //document.getElementById('output').textContent = file.result;
+
+          //parseo el archivo para poder extraer los datos
+          let booksData=JSON.parse(file.result)
+          //mando a extraer los datos para mostrarlos en el html
+          renderHTML(booksData)
+        }
+
+        file.readAsText(this.files[0]);
+
+
+    });
+
+    function renderHTML(data){
+        let htmlString="";
+        let aux;
+        for( var i=0; i<data.length; i++){
+           
+            //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
+            aux=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
+            let nuevo=aux;
+            if(data[i].categoria=="Fantasia"){
+              matrizO.insertBook(nuevo.column,nuevo.row,nuevo) 
+            }else{
+              matrizD.insertNode(nuevo.column,nuevo.row,nuevo)
+              console.log(nuevo.nameBook)
+            }
+            
+            
+                
+        }
+       
+        document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
+        matrizD.graph()
+        matrizO.graph()
+
+    }
+
+
+    //carga del usuario default
+    const admin=new User("2354168452525","Wilfred Perez","Wilfred","wilfredPerez@gmail.com","Administrador","123","+502 (123) 123-4567")
+    usuarios.addNew(admin)
+    //carga masiva de los usuarios
+    document.getElementById('cmUser').addEventListener('change', function() {
+        
+        //obtengo el archivo
+        let file = new FileReader();
+        //cargo el archivo
+        file.onload = () => {
+          //document.getElementById('output').textContent = file.result;
+
+          //parseo el archivo para poder extraer los datos
+          let usersData=JSON.parse(file.result)
+          //mando a extraer los datos para mostrarlos en el html
+          renderHTML3(usersData)
+        }
+
+        file.readAsText(this.files[0]);
+
+
+    });
+
+    function renderHTML3(data){
+        let htmlString="";
+        let aux;
+        for(let i=0; i<data.length; i++){
+           
+            //constructor(_dpi,_nombreCompleto,_nombreUsuario,_correo,_rol,_contrasenia,_telefono)
+            aux=new User(data[i].dpi,data[i].nombre_completo,data[i].nombre_usuario,data[i].correo,data[i].rol,data[i].contrasenia,data[i].telefono);
+            usuarios.addNew(aux)
+            
+            
+            
+                
+        }
+       
+        document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
+        usuarios.graph()
+
+    }

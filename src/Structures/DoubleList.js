@@ -165,13 +165,16 @@ class DoubleList{
         var g=0
         if (this.first!=null){
             var labelName=""
+            
             while(aux.next!=null){
+                
                 if(aux.value!=null){
                     labelName=aux.value.nameBook
                 }else{
+                    console.log("nodo nullo")
                     labelName=""
                 }
-
+                //labelName=aux.value.nameBook;
                 g=aux.id+1
                 rela+="    node"+aux.name+" -> node"+aux.next.name+"[dir=both];\n"             
                 labels+="    node"+aux.name+" [label=\""+labelName+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+"];\n" 
@@ -190,6 +193,13 @@ class DoubleList{
         
     }
 
+    
+
+    
+
+
+
+    
     graphTB(){
         var text=""
         var aux=this.first
@@ -216,6 +226,8 @@ class DoubleList{
 
         
     }
+
+    
 
 
 

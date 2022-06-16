@@ -31,6 +31,8 @@ class OrthogonalMatrix{
   
 
     insertBook(column,row,book){
+        //var column=book.column
+        //var row=book.row
         //cabecera de las filas
         var aux=this.rows.first
         //recorro la lista simple para encontrar la fila
@@ -56,7 +58,7 @@ class OrthogonalMatrix{
 
         this.insertColumn(column,row,nom,book)
         this.insertRow(row,column,nom,book)
-        console.log("Insertado")
+        //console.log("Insertado")
 
 
     }
@@ -228,8 +230,8 @@ class OrthogonalMatrix{
         text+="}";
 
 
-        console.log(text)
-        d3.select('#lienzo').graphviz()
+        //console.log(text)
+        d3.select('#Ortogonal').graphviz()
             .width(1600)
             .height(600)
             .renderDot(text);
@@ -237,8 +239,9 @@ class OrthogonalMatrix{
 
     }
 }
-
+export default OrthogonalMatrix;
 //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
+/*
 var terror=new OrthogonalMatrix()
 
 var uno=new Book(94615465,"Strickland Shelton","Zounds viendo\n como acomoda",2,5,10,187,"fantasia")
@@ -254,3 +257,4 @@ terror.insertBook(unoo.column,unoo.row,unoo)
 terror.insertBook(doso.column,doso.row,doso)
 terror.insertBook(treso.column,treso.row,treso)
 terror.graph()
+*/

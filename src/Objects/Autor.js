@@ -1,5 +1,5 @@
-class Autor extends Node{
-    constructor(){
+class Autor {
+    constructor(_dpi,_name,_email,_telephone,_adress,_bio){
         this.dpi=_dpi
         this.name=_name
         this.email=_email
@@ -8,3 +8,4 @@ class Autor extends Node{
         this.bio=_bio
     }
 }
+export default Autor

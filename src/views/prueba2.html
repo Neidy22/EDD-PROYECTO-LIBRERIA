@@ -4,10 +4,19 @@
     <title>Read Text File Tutorial</title>
   </head>
   <body>
-    <input type="file" name="inputFile" id="inputFile">
+    <input type="file" name="inputFile" id="cmAutors">
+    <br>
+    <input type="file" name="inputFile" id="cmBook">
+    <br>
+    <input type="file" name="inputFile" id="cmUser">
     <br>
     <pre id="output">Aqui va la info</pre>
-    <div id="lienzo"></div>
+    <div id="Ortogonal"></div>
+    <br>
+    <div id="Dispersa"></div>
+    <br>
+    <div id="arbol"></div>
+
     
 
     <script src="//d3js.org/d3.v5.min.js"></script>
@@ -17,12 +26,21 @@
     
 
     <script type="module">
-        import SparseMatrix from "../Structures/SparseMatrix.js";
-        import Book from "../Objects/Book.js";
-        //var matrizO=new OrthogonalMatrix()
-        var matrizD=new SparseMatrix()
-        //activo la funcionalidad para detectar el archivo con el input
-      document.getElementById('inputFile').addEventListener('change', function() {
+      import SparseMatrix from "../Structures/SparseMatrix.js";
+      import OrthogonalMatrix from "../Structures/OrthogonalMatrix.js"
+      import BinaryTree from "../Structures/BinaryTree.js";
+      import Book from "../Objects/Book.js";
+      import Autor from "../Objects/Autor.js";
+      
+      var matrizO=new OrthogonalMatrix()
+      var matrizD=new SparseMatrix()
+      var arbol=new BinaryTree()
+
+
+
+
+      //activo la funcionalidad para detectar el archivo con el input de libros
+      document.getElementById('cmBook').addEventListener('change', function() {
         
         //obtengo el archivo
         var file = new FileReader();
@@ -31,9 +49,9 @@
           //document.getElementById('output').textContent = file.result;
 
           //parseo el archivo para poder extraer los datos
-          var autorsData=JSON.parse(file.result)
+          var booksData=JSON.parse(file.result)
           //mando a extraer los datos para mostrarlos en el html
-          renderHTML(autorsData)
+          renderHTML(booksData)
         }
 
         file.readAsText(this.files[0]);
@@ -43,17 +61,68 @@
 
       function renderHTML(data){
         var htmlString="";
-
+        var aux;
         for( var i=0; i<data.length; i++){
             //htmlString+="<h1>"+data[i].nombre_autor+" "+data[i].correo+"</h1>";
             //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
-            var nuevo=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
-            matrizD.insertNode(nuevo.column,nuevo.row,nuevo)   
+            aux=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
+            var nuevo=aux;
+            if(data[i].categoria=="Fantasia"){
+              matrizO.insertBook(nuevo.column,nuevo.row,nuevo) 
+            }else{
+              matrizD.insertNode(nuevo.column,nuevo.row,nuevo)
+              console.log(nuevo.nameBook)
+            }
+            
+            
+                
         }
+        //nuevo=null
+        //console.log(data.length)
         document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
         matrizD.graph()
+        matrizO.graph()
 
       }
+
+
+      document.getElementById('cmAutors').addEventListener('change', function() {
+        
+        //obtengo el archivo
+        var fileAut = new FileReader();
+        //cargo el archivo
+        fileAut.onload = () => {
+          //document.getElementById('output').textContent = file.result;
+
+          //parseo el archivo para poder extraer los datos
+          var autorsData=JSON.parse(fileAut.result)
+          //mando a extraer los datos para mostrarlos en el html
+          renderHTML2(autorsData)
+        }
+
+        fileAut.readAsText(this.files[0]);
+
+
+      });
+
+      function renderHTML2(data){
+        var htmlStringA="";
+        let aux;
+        for( let i=0; i<data.length; i++){
+            //constructor(_dpi,_name,_email,_telephone,_adress,_bio)
+            aux=new Autor(data[i].dpi,data[i].nombre_autor,data[i].correo,data[i].telefono,data[i].direccion,data[i].biografia);
+            arbol.insertN(aux)
+            
+                
+        }
+        
+        //console.log(data.length)
+        document.getElementById('output').insertAdjacentHTML('beforeend',htmlStringA)
+        arbol.graph()
+
+      }
+
+
       
 
 

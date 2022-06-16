@@ -13,11 +13,8 @@ class SparseMatrix{
     insertNode(column,row,book){
         var nom=""+column+"_"+row
 
-        this.insertColumn(column,row,nom,book)
-        this.insertRow(row,column,nom,book)
-        console.log("Insertado")
-
-
+        this.insertColumn(arguments[0],arguments[1],nom,arguments[2])
+        this.insertRow(arguments[1],arguments[0],nom,arguments[2])
     }
 
     insertColumn(column,row,name,book){
@@ -31,10 +28,11 @@ class SparseMatrix{
             aux=aux.right
         }
 
-        var nuevo=new Node(book)
+        var nuevo=new Node(arguments[3])
         var temp=aux
         nuevo.id=row
         nuevo.name=name
+        //nuevo.value=book;
         temp.addNewTB(nuevo)
 
 
@@ -53,9 +51,10 @@ class SparseMatrix{
         }
 
         var temp=aux;
-        var nuevo= new Node(book);
+        var nuevo= new Node(arguments[3]);
         nuevo.id=column;
         nuevo.name=name;
+        //nuevo.value=book;
         temp.addNewAsOrdered(nuevo); 
 
     }
@@ -123,7 +122,7 @@ class SparseMatrix{
 
     graph(){
         var text="digraph MatrizDispersa{\n";
-        var name="terror"
+        var name="thriller"
         text+="nodesep=0.6;\n"
         text+="ranksep=0.6;\n"
         
@@ -180,14 +179,23 @@ class SparseMatrix{
         text+="}";
 
 
-        console.log(text)
-        d3.select('#lienzo').graphviz()
+        //console.log(text)
+        d3.select('#Dispersa').graphviz()
             .width(1600)
             .height(600)
             .renderDot(text);
 
 
     }
+
+
+
+
+
+
+
+
+
 }
 
 export default SparseMatrix;
@@ -195,7 +203,7 @@ export default SparseMatrix;
 //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria)
 /*
 var terror=new SparseMatrix()
-var uno=new Book(94615465,"Strickland Shelton","Zounds viendo\n como acomoda",2,5,10,187,"fantasia")
+var uno=new Book(94615465,"Strickland Shelton","Zounds ",2,5,10,187,"fantasia")
 var dos=new Book(54212515,"Collins Cohen","Isosure",7,9,1,214,"Thriller")
 var tres=new Book(5641564,"Williamson Lynn","Crustatia",5,6,2,191,"Fantasia")
 var unoo=new Book(94615465,"Strickland Shelton","Zombie",2,6,10,187,"fantasia")

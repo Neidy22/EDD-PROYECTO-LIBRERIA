@@ -4,18 +4,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <LINK REL=StyleSheet HREF="home.css" TYPE="text/css" MEDIA=screen>
+    <LINK REL=StyleSheet HREF="src/Styles/main.css" TYPE="text/css" MEDIA=screen>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="StyleSheet">
     <title>HOME</title>
     
 </head>
 <body>
-    <div id="Dispersa" background-color="black"></div>
-    <div id="lienzo"></div>
+    <!--
+        <div id="Dispersa" background-color="black"></div>
+        <div id="lienzo"></div>
+    -->
+    <div id="main-container">
+        <header>
+            <nav>
+                <ul class="menuPrincipal">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe88a;</span>Home</a></li>
+                    </ul>
+                        
+                    <ul>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe8b6;</span>Search</a></li>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe8cc;</span>Cart</a></li>
+                        <li><a href="#" class="link " id="singin"><span class="material-icons">&#xe853;</span>Sing In</a>
+                            
+                        </li>
+                    </ul>
+                   
+                    <form  class="formulario" id="formulario">
+                        <h1>LOGIN</h1><br>
+                        <h3>¡Inicia sesión y descubre todo lo nuevo!</h3>
+                        <label for="username">Usuario:    </label>
+                        <input id="username" type="text" name="Nombre de usuario"><br>
+                        <label for="pass">Contraseña:    </label>
+                        <input id="pass" type="password"><br>
+                        <button type="submit" id="login" >Iniciar Sesión</button><br>
+                        <h5>¿Aún no tienes una cuenta? <a href="#">Registrarse</a></h5>
+                    </form>
+                </ul>
+                
+                <ul class="menuAdmin">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link">Home</a></li>
+                        <li><a href="#" class="link">Cargas Masivas</a></li>
+                        <li><a href="#" class="link">Estructuras</a></li>
+                        <li><a href="#" class="link">Libreras</a></li>
+                        <li><a href="#" class="link">Libros</a></li>
+                        <li><a href="#" class="link">Autores</a></li>
+
+                    </ul>
+                        
+                    <ul>
+                        <li><a href="#" class="link">Search</a></li>
+                        <li><a href="#" class="link">Cart</a></li>
+                        <li><a href="#" class="link ">Sing Out</a></li>
+                    </ul>
+
+                </ul>
+
+                <ul class="menuClient">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link">Home</a></li>
+                        <li><a href="#" class="link">Libreras</a></li>
+                        <li><a href="#" class="link">Libros</a></li>
+                        <li><a href="#" class="link">Autores</a></li>
+                    </ul>
+                        
+                    <ul>
+                        <li><a href="#" class="link">Search</a></li>
+                        <li><a href="#" class="link">Cart</a></li>
+                        <li><a href="#" class="link ">Sing Out</a></li>
+                    </ul>
+
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Para Home -->
+        <section id="top10">
+            <h1>TOP 10</h1>
+            <h2>Revisa el Top 10 de clientes</h2>
+            <div id="sliderTop">
+                <div class="controls">
+                    <button id="prev">
+                        <span class="material-icons">&#xe5e0;</span>
+                    </button>
+                    <button id="next">
+                        <span class="material-icons">&#xe5e1;</span>
+                    </button>
+                </div>
+                <div id="top-container"></div>
+            </div>
+        </section>
+        <section id="about"></section>
+        <section id="login"></section>
+
+        <!--Para menu Admin-->
+        <section id="masivas"></section>
+        <section id="queue"></section>
+        <section id="circular"></section>
+        
+        <!--Para menu Cliente-->
+        <section id="fantasy"></section>
+        <section id="thriller"></section>
+        <section id="stack"></section>
+        <section id="books"></section>
+        <section id="autors"></section>
+
+    </div>
+    
     
     <script src="//d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
     <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
-    <script src="src/Structures/BinaryTree.js" type="module"></script>
+    <script  type="module"  src="src/Js/home.js"></script>
+    
     <script src="noModule.js" nomodule></script>
     
 </body>

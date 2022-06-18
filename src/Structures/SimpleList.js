@@ -192,6 +192,31 @@ class SimpleList{
 
     }
 
+
+    
+    graphDown(padre){
+        var text=" "
+        var aux=this.first
+        var rela=""
+        var labels=""
+        
+        if (this.first!=null){
+
+            while(aux.down!=null){
+                rela+="    nodeD"+aux.id+" -> nodeD"+aux.down.id+";\n"
+                labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.id+"\", group="+padre+"];\n"
+                aux=aux.down
+            }
+        }
+        labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.id+"\", group="+padre+"];\n"
+        
+        text+=labels
+        text+=rela
+        
+        return text
+
+    }
+
 }
 
 export default SimpleList;

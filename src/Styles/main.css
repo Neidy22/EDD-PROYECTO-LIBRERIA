@@ -1,0 +1,165 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    font-size:16px;
+    padding: 0;
+    margin:0;
+    /*Espacio entre cada renglon*/
+    line-height: 1.5;
+
+    background-color:black;
+}
+h2{
+    color: white;
+    text-align: center;
+}
+
+h1{
+    color: aqua;
+    text-align: center;
+}
+
+/*-------------NAV BAR-------------*/
+nav ul {
+    display:flex;
+    align-items: center;
+    /*para que quede un elemento a la izq, otro en el centro y otro a la derecha*/
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*para los hipervínculos*/
+nav ul li > a{
+    display: block; /*para poder manipular el padding con más facilidad*/
+    position: relative;
+    padding: 20px 15px 10px 15px;
+    text-decoration: none;
+
+    color:white;
+}
+
+nav ul li .link::before{
+    /*el before permitirá darle efecto subrayado a los elementos de la barra de navegación*/
+    content:'';
+    position:absolute;
+    display: block;
+    left:0;
+    bottom: 0;
+    width:100%;
+    height: 2px;
+    transform:scaleX(0);
+    transition: transform 0.3s ease;
+
+    background-color: white;
+     
+}
+
+/*para que el selector anterior se ejecute con el hover*/
+nav ul li .link:hover::before{
+    transform:scaleX(1);
+}
+/*oculto los menus de admin y cliente**/
+
+nav .menuAdmin{
+    display: none;
+}
+
+nav .menuClient{
+    display: none;
+}
+
+
+.formulario{
+    display:none;
+}
+
+#probando{
+    background-color: green;
+}
+
+
+.show-login{
+
+    display: block !important;
+}
+
+
+
+/*-----------------------------------
+            LOGIN
+-------------------------------------*/
+form{
+    background-color: whitesmoke;
+    
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 20px;
+    margin-top: 500px;
+    margin-left:39%;
+    /*height: 150px;*/
+    
+    /*margin:100px auto;
+    width: 400px;*/
+
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+button{
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 10em;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+
+
+/*-----------------------------------
+            TOP SECTION
+-------------------------------------*/
+#top10 #sliderTop .controls{
+    display:flex;
+    justify-content: center;
+}
+
+
+#top10 #sliderTop .controls #prev,
+#top10 #sliderTop .controls #next{
+  border: none;
+  height: 50px;
+  width: 80px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#top10 #sliderTop .controls #prev:hover,
+#top10 #sliderTop .controls #next:hover{
+    background-color: rgb(37, 37, 37);
+}
+

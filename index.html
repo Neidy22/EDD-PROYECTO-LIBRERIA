@@ -17,7 +17,7 @@
     <div id="main-container">
         <header>
             <nav>
-                <ul class="menuPrincipal">
+                <ul class="menuPrincipal" id="menu1">
                     <ul >
                         <li><a href="#">Logo</a></li>
                         <li><a href="#" class="link"><span class="material-icons">&#xe88a;</span>Home</a></li>
@@ -43,7 +43,7 @@
                     </form>
                 </ul>
                 
-                <ul class="menuAdmin">
+                <ul class="menuAdmin" id="menu2">
                     <ul >
                         <li><a href="#">Logo</a></li>
                         <li><a href="#" class="link">Home</a></li>
@@ -63,7 +63,7 @@
 
                 </ul>
 
-                <ul class="menuClient">
+                <ul class="menuClient" id="menu3">
                     <ul >
                         <li><a href="#">Logo</a></li>
                         <li><a href="#" class="link">Home</a></li>
@@ -77,13 +77,12 @@
                         <li><a href="#" class="link">Cart</a></li>
                         <li><a href="#" class="link ">Sing Out</a></li>
                     </ul>
-
                 </ul>
             </nav>
         </header>
         
         <!-- Para Home -->
-        <section id="top10">
+        <section class="menuPrincipal" id="top10">
             <h1>TOP 10</h1>
             <h2>Revisa el Top 10 de clientes</h2>
             <div id="sliderTop">
@@ -98,21 +97,35 @@
                 <div id="top-container"></div>
             </div>
         </section>
-        <section id="about"></section>
-        <section id="login"></section>
+        <section class="menuPrincipal" id="about"></section>
+        
 
         <!--Para menu Admin-->
-        <section id="masivas"></section>
-        <section id="queue"></section>
-        <section id="circular"></section>
+        <section class="menuAdmin" id="masivas">
+            <input type="file" name="inputFile" id="cmAutors">
+            <br>
+            <input type="file" name="inputFile" id="cmBook">
+            <br>
+            <input type="file" name="inputFile" id="cmUser">
+            <br>
+            <pre id="output">Aqui va la info</pre>
+            <div id="Ortogonal"></div>
+            <br>
+            <div id="Dispersa"></div>
+            <br>
+            <div id="arbol"></div>
+            <br>
+            <div id="Circular"></div>
+        </section>
+        <section  class="menuAdmin" id="queue"></section>
+        <section class="menuAdmin" id="circular"></section>
         
         <!--Para menu Cliente-->
-        <section id="fantasy"></section>
-        <section id="thriller"></section>
-        <section id="stack"></section>
-        <section id="books"></section>
-        <section id="autors"></section>
-
+        <section class="menuClient" id="fantasy"></section>
+        <section class="menuClient" id="thriller"></section>
+        <section class="menuClient" id="stack"></section>
+        <section class="menuClient" id="books"></section>
+        <section class="menuClient" id="autors"></section>
     </div>
     
     
@@ -120,6 +133,7 @@
     <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
     <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
     <script  type="module"  src="src/Js/home.js"></script>
+    <script type="module" src="src/Js/CargasMasivas.js"></script>
     
     <script src="noModule.js" nomodule></script>
     

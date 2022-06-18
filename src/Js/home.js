@@ -1,3 +1,5 @@
+import "./CargasMasivas.js"
+
 
 const login=document.querySelector("#singin");
 
@@ -14,19 +16,4 @@ login.addEventListener("click", (e) =>{
     form.classList.toggle('show-login');
 });
 
-/*----------------------------------
-Codigo para el ingreso de un usuario
-------------------------------------*/
 
-form.onsubmit = function(e){
-   
-  e.preventDefault();
-  const user = document.getElementById("username").value;
-  const pass=document.getElementById("pass").value;
-  form.reset();
-  console.log(user);
-  console.log(pass);
-  
-  
-}
-    

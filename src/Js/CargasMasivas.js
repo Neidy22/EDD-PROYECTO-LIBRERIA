@@ -11,6 +11,7 @@ import User from "../Objects/User.js";
     const arbol=new BinaryTree()
     const usuarios=new DoubleCircularList()
 
+    
 
     //carga masiva de los autores
     document.getElementById('cmAutors').addEventListener('change', function() {
@@ -134,3 +135,41 @@ import User from "../Objects/User.js";
         usuarios.graph()
 
     }
+
+
+    /*----------------------------------
+      Codigo para el ingreso de un usuario
+    ------------------------------------*/
+
+    const form=document.getElementById("formulario");
+    
+    form.onsubmit = function(e){
+   
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass=document.getElementById("pass").value;
+      form.reset();
+      //console.log(user);
+      //console.log(pass);
+      var usuario=usuarios.search(user,pass);
+      if(usuario!=null){
+        var rol=usuario.value.rol;
+        if(rol=="Administrador"){
+            showHide('none',document.getElementsByClassName("menuPrincipal"));
+            showHide('block',document.getElementsByClassName("menuAdmin"));
+          
+
+        }
+      }
+  
+    }
+
+    //función para mostrar u ocultar los elementos de una clase
+    function showHide(estado,elementos){
+      var i;
+      for(i=0; i<elementos.length; i++){
+        elementos[i].style.display=estado;
+      }
+
+    }
+    

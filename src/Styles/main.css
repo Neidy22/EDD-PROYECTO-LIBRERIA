@@ -70,11 +70,11 @@ nav ul li .link:hover::before{
 }
 /*oculto los menus de admin y cliente**/
 
-nav .menuAdmin{
+.menuAdmin{
     display: none;
 }
 
-nav .menuClient{
+.menuClient{
     display: none;
 }
 
@@ -93,7 +93,9 @@ nav .menuClient{
     display: block !important;
 }
 
-
+.show{
+    display:block !important;
+}
 
 /*-----------------------------------
             LOGIN

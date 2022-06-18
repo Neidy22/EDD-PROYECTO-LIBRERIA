@@ -68,6 +68,25 @@ class DoubleCircularList{
 
     }
 
+
+    search(usuario,contra){
+        var aux=this.first;
+        do{
+            if(aux.value.userName==usuario){
+                console.log("Usuario valido")
+                if(aux.value.password==contra){
+                    console.log("Contraseña valida")
+                    return aux;
+                }else{
+                    alert("Contraseña incorrecta")
+                }
+            }
+            aux=aux.next
+        }while(aux!=this.first)
+        alert("No se encontró ningun usuario")
+        return null;
+
+    }
     
     
 

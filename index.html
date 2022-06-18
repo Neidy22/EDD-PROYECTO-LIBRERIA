@@ -21,8 +21,7 @@
                     <ul >
                         <li><a href="#">Logo</a></li>
                         <li><a href="#" class="link"><span class="material-icons">&#xe88a;</span>Home</a></li>
-                    </ul>
-                        
+                    </ul>  
                     <ul>
                         <li><a href="#" class="link"><span class="material-icons">&#xe8b6;</span>Search</a></li>
                         <li><a href="#" class="link"><span class="material-icons">&#xe8cc;</span>Cart</a></li>
@@ -42,47 +41,35 @@
                         <h5>¿Aún no tienes una cuenta? <a href="#">Registrarse</a></h5>
                     </form>
                 </ul>
+
+                <ul class="menuClient menuAdmin" id="menu3">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link" id="activar-home"><span class="material-icons">&#xe88a;</span>Home</a></li>
+                        <li><a href="#" class="link" id="activar-libreras"><span class="material-icons">&#xe02f;</span>Libreras</a></li>
+                        <li><a href="#" class="link" id="activar-libros"><span class="material-icons">&#xe865;</span>Libros</a></li>
+                        <li><a href="#" class="link" id="activar-autores"><span class="material-icons">&#xf8a6;</span>Autores</a></li>
+                    </ul>
+                        
+                    <ul>
+                        <li><a href="#" class="link" id="activar-carrito"><span class="material-icons">&#xe8cc;</span>Cart</a></li>
+                        <li><a href="#" class="link"id="activar-salida">Sing Out</a></li>
+                    </ul>
+                </ul>
                 
                 <ul class="menuAdmin" id="menu2">
-                    <ul >
-                        <li><a href="#">Logo</a></li>
-                        <li><a href="#" class="link">Home</a></li>
-                        <li><a href="#" class="link">Cargas Masivas</a></li>
-                        <li><a href="#" class="link">Estructuras</a></li>
-                        <li><a href="#" class="link">Libreras</a></li>
-                        <li><a href="#" class="link">Libros</a></li>
-                        <li><a href="#" class="link">Autores</a></li>
-
-                    </ul>
-                        
-                    <ul>
-                        <li><a href="#" class="link">Search</a></li>
-                        <li><a href="#" class="link">Cart</a></li>
-                        <li><a href="#" class="link ">Sing Out</a></li>
-                    </ul>
-
+                    
+                    <li><a href="#" class="link" id="activar-masivas">Cargas Masivas</a></li>
+                    <li><a href="#" class="link" id="activar-estructuras">Estructuras</a></li>
+                      
                 </ul>
 
-                <ul class="menuClient" id="menu3">
-                    <ul >
-                        <li><a href="#">Logo</a></li>
-                        <li><a href="#" class="link">Home</a></li>
-                        <li><a href="#" class="link">Libreras</a></li>
-                        <li><a href="#" class="link">Libros</a></li>
-                        <li><a href="#" class="link">Autores</a></li>
-                    </ul>
-                        
-                    <ul>
-                        <li><a href="#" class="link">Search</a></li>
-                        <li><a href="#" class="link">Cart</a></li>
-                        <li><a href="#" class="link ">Sing Out</a></li>
-                    </ul>
-                </ul>
+               
             </nav>
         </header>
         
         <!-- Para Home -->
-        <section class="menuPrincipal" id="top10">
+        <section class="seccionAdmin seccionCliente menuPrincipal" id="top10">
             <h1>TOP 10</h1>
             <h2>Revisa el Top 10 de clientes</h2>
             <div id="sliderTop">
@@ -101,7 +88,7 @@
         
 
         <!--Para menu Admin-->
-        <section class="menuAdmin" id="masivas">
+        <section class="seccionAdmin menuAdmin" id="masivas">
             <input type="file" name="inputFile" id="cmAutors">
             <br>
             <input type="file" name="inputFile" id="cmBook">
@@ -117,15 +104,20 @@
             <br>
             <div id="Circular"></div>
         </section>
-        <section  class="menuAdmin" id="queue"></section>
-        <section class="menuAdmin" id="circular"></section>
+        <section  class="seccionAdmin menuAdmin" id="estructuras"><h1>aqui van las estructuras</h1></section>
+       
         
         <!--Para menu Cliente-->
-        <section class="menuClient" id="fantasy"></section>
-        <section class="menuClient" id="thriller"></section>
-        <section class="menuClient" id="stack"></section>
-        <section class="menuClient" id="books"></section>
-        <section class="menuClient" id="autors"></section>
+        <section class="seccionAdmin menuAdmin" id="librera"><h1>Fantasy</h1>
+            <section><h2>Fantasy</h2></section>
+            <section><h2>Trhiller</h2></section>
+
+        </section>
+
+        <section class="seccionAdmin menuAdmin" id="stack"><h1>Pila disponible</h1></section>
+        <section class="seccionAdmin menuAdmin" id="books"><h1>Ordenar Libros</h1></section>
+        <section class="seccionAdmin menuAdmin" id="autors"><h1>ver autores</h1></section>
+        <section class="seccionAdmin menuAdmin" id="carrito"><h1>Carrito de compras</h1></section>
     </div>
     
     

@@ -157,8 +157,8 @@ import User from "../Objects/User.js";
         if(rol=="Administrador"){
             showHide('none',document.getElementsByClassName("menuPrincipal"));
             showHide('block',document.getElementsByClassName("menuAdmin"));
+            showHideSeccion(document.getElementsByClassName("seccionAdmin"),'top10');
           
-
         }
       }
   
@@ -172,4 +172,30 @@ import User from "../Objects/User.js";
       }
 
     }
+
+   
+
+    //función para la pantalla principal del administrador
+    function homeAdmin(){
+      document.getElementById("top10").style.display='block';
+      document.getElementById("masivas").style.display='none';
+      document.getElementById("estructuras").style.display='none';
+
+    }
+
+     //funcion para activar una seccion especifica de un menu 
+    function showHideSeccion(clase,id){
+      var i;
+      for(i=0; i<clase.length; i++){
+        console.log(clase[i].getAttribute('id'));
+        console.log(id);
+        if(clase[i].getAttribute('id')==id){
+          clase[i].style.display='block';
+        }else{
+          clase[i].style.display='none';
+        }
+      }
+    }
     
+
+    export{showHideSeccion,showHide};

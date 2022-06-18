@@ -42,7 +42,7 @@ import User from "../Objects/User.js";
             
                 
         }
-        document.getElementById('output').insertAdjacentHTML('beforeend',htmlStringA)
+        //document.getElementById('output').insertAdjacentHTML('beforeend',htmlStringA)
         arbol.graph()
 
     }
@@ -87,7 +87,7 @@ import User from "../Objects/User.js";
                 
         }
        
-        document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
+       // document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
         matrizD.graph()
         matrizO.graph()
 
@@ -131,7 +131,7 @@ import User from "../Objects/User.js";
                 
         }
        
-        document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
+        //document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
         usuarios.graph()
 
     }

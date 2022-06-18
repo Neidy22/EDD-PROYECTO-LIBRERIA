@@ -165,3 +165,34 @@ button{
     background-color: rgb(37, 37, 37);
 }
 
+/*-----------------------------------
+            SECCION DE GRAFOS
+-------------------------------------*/
+.grafo{
+    border:1px solid black;
+    width:90%;
+    margin:5px;
+    padding:5px;
+    margin-left: 5%;
+
+
+    background:silver;
+
+}
+
+/*-----------------------------------
+            SECCION DE carga masiva
+-------------------------------------*/
+.masivas-container{
+    float:left;
+    border:1px solid green;
+    width:30%;
+    margin:10px;
+    margin-left: 30px;
+    padding: 10px;
+    background: #F4CAAB;
+}
+
+.masivas-container:hover{
+    background:#E6C570;
+}

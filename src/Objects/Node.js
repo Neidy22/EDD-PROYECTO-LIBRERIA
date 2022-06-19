@@ -19,6 +19,9 @@ class Node{
     setId(ide){
         this.id=ide
     }
+    getValue(){
+        return this.value;
+    }
 }
 
 export default Node;

@@ -31,8 +31,7 @@ class OrthogonalMatrix{
   
 
     insertBook(column,row,book){
-        //var column=book.column
-        //var row=book.row
+       
         //cabecera de las filas
         var aux=this.rows.first
         //recorro la lista simple para encontrar la fila
@@ -77,10 +76,10 @@ class OrthogonalMatrix{
         }
 
         var nuevo=new Node(book)
-        var temp=aux
+        //var temp=aux.first
         nuevo.id=row
         nuevo.name=name
-        temp.addNewTB(nuevo)
+        aux.addNewTB(nuevo)
 
 
     
@@ -99,11 +98,11 @@ class OrthogonalMatrix{
             aux=aux.down
         }
 
-        var temp=aux;
+        //var temp=aux.value;
         var nuevo= new Node(book);
         nuevo.id=column;
         nuevo.name=name;
-        temp.addNewAsOrdered(nuevo); 
+        aux.addNewAsOrdered(nuevo); 
 
     }
 
@@ -238,6 +237,77 @@ class OrthogonalMatrix{
 
 
     }
+
+    createLibreraFantasy(){
+        var aux=this.rows.first
+        var i=0
+        var j=0
+        const bloqueFantasy=document.getElementById("fantasy");
+        while(aux!=null){
+  
+            var auxF=aux.first
+            j=0
+            //console.log("fila" + i )
+            var fila=document.createElement("div");
+            fila.id="F"+i;
+            //fila.textContent="Fila"+i
+            fila.classList="librera-view";
+            bloqueFantasy.insertAdjacentElement("beforeend",fila);
+                
+            while(auxF!=null){
+                var book=auxF.getValue();
+                var div=document.createElement("div");
+                div.id="F"+i+"C"+j
+                div.classList="librera-book";
+                
+                if(book!=null){
+                    div.textContent=auxF.value.nameBook;
+                }else{
+                    div.textContent=" ";
+                }
+                //console.log(" Columna"+j )
+                fila.insertAdjacentElement("beforeend",div);
+                auxF=auxF.next
+                j++
+            }
+            document.createElement("br");
+            i++
+            aux=aux.down
+        }
+    }
+
+
+    /*
+    createLibreraFantasy(){
+        var auxF=this.rows.first;
+        //console.log(auxF.value.name);
+        var i;
+        var j;
+        const bloqueFantasy=document.getElementById("fantasy");
+         //recorro las filas para accesar a la lista doble enlazada de cada nodo de la cabecera filas
+        for(i=0; i<this.rows.size;i++){
+  
+          var auxC=auxF.first;
+          //recorro la lista doble con next para obtener los nodos de cada columna de la fila
+          for(j=0;j<this.columns.size;j++){
+            
+            var libro=document.createElement("div");
+            libro.class="fila"+i+"";
+            libro.class="columna"+j+"";
+            libro.textContent=auxF.value.nameBook;
+            bloqueFantasy.insertAdjacentElement("beforeend",libro);
+            auxC=auxC.right;
+  
+          }
+  
+          document.createElement("br");
+  
+          auxF=auxF.down;
+        }
+        
+  
+      };
+      */
 }
 export default OrthogonalMatrix;
 //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){

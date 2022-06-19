@@ -155,12 +155,12 @@ class SimpleList{
             while(aux.right!=null){            
                 g=aux.id+1
                 rela+="    nodeR"+aux.id+" -> nodeR"+aux.right.id+";\n"
-                labels+="    nodeR"+aux.id+" [ shape=box, label=\""+aux.id+"\",weight="+g+"];\n"
+                labels+="    nodeR"+aux.id+" [ shape=box, label=\""+aux.id+"\",weight="+g+", group="+g+"];\n"
                 aux=aux.right
             }
         }
         g=aux.id+1
-        labels+="    nodeR"+aux.id+" [shape=box, label=\""+aux.id+"\",  weight="+g+"];\n"
+        labels+="    nodeR"+aux.id+" [shape=box, label=\""+aux.id+"\",  weight="+g+", group="+g+"];\n"
 
         text+=labels
         text+=rela

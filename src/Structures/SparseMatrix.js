@@ -148,7 +148,19 @@ class SparseMatrix{
             
             if(f.size>0){
                 rela+="    nodeD"+aux.id+" -> node"+f.first.name+"[dir=both];\n";
-                text+=f.graphN();
+                var aux2=aux.first
+                
+                while(aux2.next!=null){
+                    var g=aux2.value.column+1;
+                    rela+="     node"+aux2.name+" -> node"+aux2.next.name+"[dir=both];\n";
+                    rela+="     node"+aux2.name+"[label=\""+aux2.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+", group="+g+"];\n"
+                    aux2=aux2.next;
+                
+                }
+                var g=aux2.value.column+1;
+                rela+="     node"+aux2.name+"[label=\""+aux2.value.nameBook+"\", shape=box,  style=filled, fillcolor=\"white\" , weight="+g+" , group="+g+"];\n"
+                
+                //text+=f.graphN();
             }
             
            // n++;
@@ -179,7 +191,7 @@ class SparseMatrix{
         text+="}";
 
 
-        //console.log(text)
+        console.log(text)
         d3.select('#Dispersa').graphviz()
             .width(1600)
             .height(600)
@@ -188,6 +200,44 @@ class SparseMatrix{
 
     }
 
+
+    createLibreraThriller(){
+        var aux=this.rows.first
+        var i=0
+        var j=0
+        const bloqueThriller=document.getElementById("thriller");
+        while(aux!=null){
+  
+            var auxF=aux.first
+            j=0
+            //console.log("fila" + i )
+            var fila=document.createElement("div");
+            fila.id="F"+i;
+            //fila.textContent="Fila"+i
+            fila.classList="librera-view";
+            bloqueThriller.insertAdjacentElement("beforeend",fila);
+                
+            while(auxF!=null){
+                var book=auxF.getValue();
+                var div=document.createElement("div");
+                div.id="F"+i+"C"+j
+                div.classList="librera-book";
+                
+                if(book!=null){
+                    div.textContent=auxF.value.nameBook;
+                }else{
+                    div.textContent=" ";
+                }
+                //console.log(" Columna"+j )
+                fila.insertAdjacentElement("beforeend",div);
+                auxF=auxF.next
+                j++
+            }
+            document.createElement("br");
+            i++
+            aux=aux.down
+        }
+    }
 
 
 

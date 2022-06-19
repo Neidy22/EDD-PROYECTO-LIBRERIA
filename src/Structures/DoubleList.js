@@ -171,7 +171,7 @@ class DoubleList{
                 if(aux.value!=null){
                     labelName=aux.value.nameBook
                 }else{
-                    console.log("nodo nullo")
+                    //console.log("nodo nullo")
                     labelName=""
                 }
                 //labelName=aux.value.nameBook;

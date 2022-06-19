@@ -69,18 +69,18 @@ import User from "../Objects/User.js";
     });
 
     function renderHTML(data){
-        let htmlString="";
-        let aux;
+        //let htmlString="";
+        
         for( var i=0; i<data.length; i++){
            
             //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
-            aux=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
-            let nuevo=aux;
+            var nuevo=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
+            
             if(data[i].categoria=="Fantasia"){
               matrizO.insertBook(nuevo.column,nuevo.row,nuevo) 
             }else{
               matrizD.insertNode(nuevo.column,nuevo.row,nuevo)
-              console.log(nuevo.nameBook)
+              //console.log(nuevo.nameBook)
             }
             
             
@@ -88,8 +88,10 @@ import User from "../Objects/User.js";
         }
        
        // document.getElementById('output').insertAdjacentHTML('beforeend',htmlString)
-        matrizD.graph()
-        matrizO.graph()
+        matrizD.graph();
+        matrizO.graph();
+        matrizO.createLibreraFantasy();
+        matrizD.createLibreraThriller();
 
     }
 
@@ -173,22 +175,12 @@ import User from "../Objects/User.js";
 
     }
 
-   
-
-    //función para la pantalla principal del administrador
-    function homeAdmin(){
-      document.getElementById("top10").style.display='block';
-      document.getElementById("masivas").style.display='none';
-      document.getElementById("estructuras").style.display='none';
-
-    }
-
      //funcion para activar una seccion especifica de un menu 
     function showHideSeccion(clase,id){
       var i;
       for(i=0; i<clase.length; i++){
-        console.log(clase[i].getAttribute('id'));
-        console.log(id);
+        //console.log(clase[i].getAttribute('id'));
+        //console.log(id);
         if(clase[i].getAttribute('id')==id){
           clase[i].style.display='block';
         }else{
@@ -197,5 +189,13 @@ import User from "../Objects/User.js";
       }
     }
     
+
+
+   
+
+ 
+
+
+
 
     export{showHideSeccion,showHide};

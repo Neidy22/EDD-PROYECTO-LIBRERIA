@@ -91,7 +91,6 @@ btnLogout.addEventListener("click",(e) => {
     e.preventDefault()
     showHide('',document.getElementsByClassName("menuPrincipal"));
     showHide('none',document.getElementsByClassName("menuAdmin"));
-    showHide('none',docuement.getElementsByClassName("menuClient"));
-    
-    
+    showHide('none',docuement.getElementsByClassName("menuClient")); 
 });
+

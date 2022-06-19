@@ -4,6 +4,7 @@ import {showHideSeccion,showHide} from "./CargasMasivas.js"
 
 const login=document.querySelector("#singin");
 const form=document.getElementById("formulario");
+const stack=document.getElementById("stack");
 
 
 /*-------------------------------------------------------
@@ -94,3 +95,23 @@ btnLogout.addEventListener("click",(e) => {
     showHide('none',docuement.getElementsByClassName("menuClient")); 
 });
 
+
+/*-------------------------------------------------------
+            Codigo para mostrar la pila
+--------------------------------------------------------*/
+function showStack(componente,libro){
+    var texto=document.createElement("h2");
+    console.log("click en "+libro.nameBook);
+    texto.textContent=libro.nameBook+" Cantidad "+libro.quantity;
+    stack.insertAdjacentElement("beforebegin",texto);
+    libro.pila.graph();
+    stack.style.visibility='';
+    
+    
+
+}
+
+
+
+
+export {showStack}

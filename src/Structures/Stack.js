@@ -8,6 +8,7 @@ class Stack{
 
     push(data){
         var nuevo=new Node(data)
+        nuevo.id=this.size;
         if(this.peak==null){
             this.peak=nuevo
         }else{
@@ -42,12 +43,12 @@ class Stack{
             text+="    struct1 [label=\"<f0>Vacía\"];\n";
         }else{
             var n=0
-            text+="    struct1 [label=\"<f"+n+">"+aux.value.nameBook+""
+            text+="    struct1 [label=\"<f"+n+">"+aux.id+""
             aux=aux.down
             while(aux!=null){
                 n++
                
-                text+="|<f"+n+">"+aux.value.nameBook+""
+                text+="|<f"+n+">"+aux.id+""
                 aux=aux.down
                 
             }
@@ -59,10 +60,10 @@ class Stack{
         text+="}\n"
        
 
-        //console.log(text)
+        console.log(text)
 
         console.log(text)
-        d3.select('#lienzo').graphviz()
+        d3.select('#stackBook').graphviz()
             .width(1600)
             .height(600)
             .renderDot(text);
@@ -162,6 +163,7 @@ class Stack{
     }
 
 }
+export default Stack;
 
 /*
 var pila=new stack()

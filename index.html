@@ -111,15 +111,19 @@
             
         </section>
         <section  class="seccionAdmin menuAdmin" id="estructuras">
+            <!--
             <h1>Matriz Ortogonal - Librera Fantasy</h1>
             <div class="grafo" id="Ortogonal"></div>
             <br>
             <h1>Matriz Dispersa - Librera Thriller</h1>
             <div class="grafo" id="Dispersa"></div>
             <br>
-            <h1>Árbol Binario de Búsqueda - Autores</h1>
+             <h1>Árbol Binario de Búsqueda - Autores</h1>
             <div class="grafo" id="arbol"></div>
             <br>
+            -->
+           
+           
             <h1>Lista de Listas Doble Circular - Usuarios</h1>
             <div class="grafo" id="Circular"></div>
             <br>
@@ -132,14 +136,47 @@
         
         <!--Para menu Cliente-->
         <section class="seccionAdmin menuAdmin" id="librera"><h1>LIBRERAS</h1>
-            <section class="librera-container" id="fantasy"><h2>Fantasy</h2></section>
-            <section class="librera-container" id="thriller"><h2>Trhiller</h2></section>
+            <section class="librera-container" id="fantasy"><h2>Fantasy</h2>
+                <h1>Matriz Ortogonal - Librera Fantasy</h1>
+                <div class="grafo" id="Ortogonal"></div>
+                <br>
+            </section>
+            
+            <section class="librera-container" id="thriller"><h2>Thriller</h2>
+                <h1>Matriz Dispersa - Librera Thriller</h1>
+                <div class="grafo" id="Dispersa"></div>
+                <br>
+            </section>
+
+            <form  class="librera-container" id="stack"><h1>Pila disponible</h1>
+                <div id="stackBook">Pila disponible</div>
+                <label for="cantidad">Cantidad</label>
+                <input id="cantidad" type="text" name="cant"><br>
+                <button type="submit" id="añadirCarrito" >Añadir al carrito</button><br>
+                <button type="submit" id="cancelar" >Cerrar</button><br>
+                
+            </form>
 
         </section>
 
-        <section class="seccionAdmin menuAdmin" id="stack"><h1>Pila disponible</h1></section>
+        
         <section class="seccionAdmin menuAdmin" id="books"><h1>Ordenar Libros</h1></section>
-        <section class="seccionAdmin menuAdmin" id="autors"><h1>ver autores</h1></section>
+        <section class="seccionAdmin menuAdmin" id="autors">
+            <h1>Árbol Binario de Búsqueda - Autores</h1>
+
+            <div id="autorBio"></div>
+            <section id="autors-container"></section>
+            <div class="grafo" id="arbol"></div>
+            <form  id="buscarAutor"><h1>Buscar Autor</h1>
+                
+                <label for="autor-name">Nombre de autor:</label>
+                <input id="autor-name" type="text" name="autorN"><br>
+                <button type="submit" id="search" >Buscar</button><br>
+            
+                
+            </form>
+            <br>
+        </section>
         <section class="seccionAdmin menuAdmin" id="carrito"><h1>Carrito de compras</h1></section>
     </div>
     

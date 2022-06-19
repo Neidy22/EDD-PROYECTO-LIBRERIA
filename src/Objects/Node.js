@@ -20,7 +20,7 @@ class Node{
         this.id=ide
     }
     getValue(){
-        return this.value;
+        return this.value;s
     }
 }
 

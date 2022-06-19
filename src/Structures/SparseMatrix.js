@@ -2,6 +2,7 @@ import Node from "../Objects/Node.js";
 import Book from "../Objects/Book.js";
 import SimpleList from "./SimpleList.js";
 import DoubleList from "./DoubleList.js";
+import {showStack} from "../Js/home.js";
 
 class SparseMatrix{
     constructor(){
@@ -191,7 +192,7 @@ class SparseMatrix{
         text+="}";
 
 
-        console.log(text)
+        //console.log(text)
         d3.select('#Dispersa').graphviz()
             .width(1600)
             .height(600)
@@ -206,6 +207,7 @@ class SparseMatrix{
         var i=0
         var j=0
         const bloqueThriller=document.getElementById("thriller");
+        //recorro las filas
         while(aux!=null){
   
             var auxF=aux.first
@@ -216,22 +218,44 @@ class SparseMatrix{
             //fila.textContent="Fila"+i
             fila.classList="librera-view";
             bloqueThriller.insertAdjacentElement("beforeend",fila);
-                
+            //recorro las columnas
+            var n=0
             while(auxF!=null){
+
+
+                //si el id de columna está vacío
+                if(auxF.value.column>n){
+                    //rellenar con divs vacíos 
+                    while(n<=auxF.value.column){
+                        var divacio=document.createElement("div");
+                        divacio.classList="librera-vacios";
+                        fila.insertAdjacentElement("beforeend",divacio);
+                        n++
+                    }
+                    
+                }
+
+                
                 var book=auxF.getValue();
-                var div=document.createElement("div");
+                var div=document.createElement("a");
+                div.href="#";
                 div.id="F"+i+"C"+j
                 div.classList="librera-book";
-                
+                    
                 if(book!=null){
                     div.textContent=auxF.value.nameBook;
+                    
                 }else{
                     div.textContent=" ";
                 }
                 //console.log(" Columna"+j )
                 fila.insertAdjacentElement("beforeend",div);
+
+                
+               
                 auxF=auxF.next
                 j++
+                n++
             }
             document.createElement("br");
             i++
@@ -241,7 +265,7 @@ class SparseMatrix{
 
 
 
-
+    
 
 
 

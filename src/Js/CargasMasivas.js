@@ -5,11 +5,14 @@ import DoubleCircularList from "../Structures/DoubleCircularList.js"
 import Autor from "../Objects/Autor.js";
 import Book from "../Objects/Book.js";
 import User from "../Objects/User.js";
+import SimpleList from "../Structures/SimpleList.js";
+import Node from "../Objects/Node.js";
 
     const matrizO=new OrthogonalMatrix()
     const matrizD=new SparseMatrix()
     const arbol=new BinaryTree()
     const usuarios=new DoubleCircularList()
+    const books=new SimpleList();
 
     
 
@@ -44,6 +47,7 @@ import User from "../Objects/User.js";
         }
         //document.getElementById('output').insertAdjacentHTML('beforeend',htmlStringA)
         arbol.graph()
+        arbol.recorrer()
 
     }
 
@@ -75,7 +79,8 @@ import User from "../Objects/User.js";
            
             //constructor(_isbn,_nombreA,_nombreB,_cantidad,_fila,_columna,_paginas,_categoria){
             var nuevo=new Book(data[i].isbn,data[i].nombre_autor,data[i].nombre_libro,data[i].cantidad,data[i].fila,data[i].columna,data[i].paginas,data[i].categoria);
-            
+            insertEjemplares(nuevo.quantity,nuevo);
+            books.addNewOrdered(nuevo)
             if(data[i].categoria=="Fantasia"){
               matrizO.insertBook(nuevo.column,nuevo.row,nuevo) 
             }else{
@@ -95,6 +100,16 @@ import User from "../Objects/User.js";
 
     }
 
+    //insertar ejemplares en una pila
+    function insertEjemplares(cantidad,libro){
+      var i=0
+
+      while(i<cantidad){
+        libro.pila.push(i)
+        i++
+      }
+      
+    }
 
     //carga del usuario default
     const admin=new User("2354168452525","Wilfred Perez","Wilfred","wilfredPerez@gmail.com","Administrador","123","+502 (123) 123-4567")
@@ -190,7 +205,25 @@ import User from "../Objects/User.js";
     }
     
 
+     /*----------------------------------
+        Codigo para Buscar un autor
+    ------------------------------------*/
 
+    const autorBuscado=document.getElementById("buscarAutor");
+    
+    autorBuscado.onsubmit = function(e){
+   
+      e.preventDefault();
+      const nombre = document.getElementById("autor-name").value;
+      
+      autorBuscado.reset();
+      //console.log(user);
+      //console.log(pass);
+      arbol.search(nombre);
+      
+
+     
+    }
    
 
  

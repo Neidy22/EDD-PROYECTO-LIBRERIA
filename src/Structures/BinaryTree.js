@@ -113,6 +113,66 @@ class BinaryTree{
     
     }
 
+
+    search(nombre){
+        const divA=document.getElementById("autorBio");
+        this.searchPRE(this,nombre,divA);
+    }
+
+    searchPRE(actual,nombre,cont){
+        if(actual.root!=null){
+            if(nombre===actual.root.value.name){
+                const aut=actual.root.value;
+                console.log(actual.root.value.name)
+                alert("Autor encontrado")
+                
+                const nom=document.createElement("h2");
+                nom.textContent=aut.name;
+                cont.insertAdjacentElement("beforeend",nom)
+                const dpi=document.createElement("h3");
+                dpi.textContent=aut.dpi;
+                cont.insertAdjacentElement("beforeend",dpi)
+                const email=document.createElement("h3");
+                email.textContent=aut.email;
+                cont.insertAdjacentElement("beforeend",email)
+                const tel=document.createElement("h3");
+                tel.textContent=aut.telephone;
+                cont.insertAdjacentElement("beforeend",tel)
+                const direc=document.createElement("h3");
+                direc.textContent=aut.adress;
+                cont.insertAdjacentElement("beforeend",direc)
+                const bio=document.createElement("p");
+                bio.textContent=aut.bio;
+                cont.insertAdjacentElement("beforeend",bio)
+                 
+            }
+            this.searchPRE(actual.left_son,nombre,cont);
+            this.searchPRE(actual.right_son,nombre,cont);
+        }
+       
+    }
+
+    recorrer(){
+        const container=document.getElementById("autors-container")
+        this.recorrerPreorder(this,container)
+    }
+
+    recorrerPreorder(actual,cont){
+        if(actual.root!=null){
+            
+            const div=document.createElement("div");
+            div.classList="autor-view";
+            div.textContent=actual.root.value.name;
+            cont.insertAdjacentElement("beforeend",div);
+            const logo=document.createElement("span");
+            logo.classList="material-icons";
+            logo.textContent="&#xea67;";
+            this.recorrerPreorder(actual.left_son,cont)
+            this.recorrerPreorder(actual.right_son,cont)
+        }
+
+    }
+
     graph(){
         var text="digraph Autores{\n";
         text+="    rankdir=TB;\n";

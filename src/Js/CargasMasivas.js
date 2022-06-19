@@ -2,6 +2,7 @@ import BinaryTree from "../Structures/BinaryTree.js";
 import SparseMatrix from "../Structures/SparseMatrix.js";
 import OrthogonalMatrix from "../Structures/OrthogonalMatrix.js"
 import DoubleCircularList from "../Structures/DoubleCircularList.js"
+import Queue from "../Structures/Queue.js";
 import Autor from "../Objects/Autor.js";
 import Book from "../Objects/Book.js";
 import User from "../Objects/User.js";
@@ -12,8 +13,9 @@ import Node from "../Objects/Node.js";
     const matrizD=new SparseMatrix()
     const arbol=new BinaryTree()
     const usuarios=new DoubleCircularList()
-    const books=new SimpleList();
-
+    const books=new SimpleList()
+    const queue=new Queue();
+    var usuario;
     
 
     //carga masiva de los autores
@@ -168,8 +170,8 @@ import Node from "../Objects/Node.js";
       form.reset();
       //console.log(user);
       //console.log(pass);
-      var usuario=usuarios.search(user,pass);
-      if(usuario!=null){
+      usuario=usuarios.search(user,pass);
+      if(usuario!=0){
         var rol=usuario.value.rol;
         if(rol=="Administrador"){
             showHide('none',document.getElementsByClassName("menuPrincipal"));
@@ -240,9 +242,28 @@ import Node from "../Objects/Node.js";
     
     }
    
+    const comprarLibro=document.getElementById("comprarLibro");
+    
+    comprarLibro.onsubmit = function(e){
+   
+      e.preventDefault();
+      var nombre = document.getElementById("bookname").value;
+      var cantidad = document.getElementById("cantidadB").value;
+    
+      comprarLibro.reset();
+      
+      books.buyBook(nombre,cantidad,usuario,queue);
+      
+      usuarios.graph()
+
+      console.log("Se compró")
+      
+    
+    
+    }
 
  
-
+    
 
 
 

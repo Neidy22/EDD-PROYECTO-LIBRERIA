@@ -87,6 +87,22 @@ class DoubleCircularList{
         return null;
 
     }
+
+    searchU(usuario){
+        var aux=this.first;
+        do{
+            if(aux.value.userName==usuario){
+                console.log("Usuario valido")
+                
+                return aux;
+                
+            }
+            aux=aux.next
+        }while(aux!=this.first)
+        alert("No se encontró ningun usuario")
+        return null;
+
+    }
     
     
 
@@ -250,7 +266,7 @@ class DoubleCircularList{
                 //verifico si tiene libros comprados
                 if(aux.down.first!=null){
                     rela+="   node"+aux.value.dpi+" -> nodeD"+aux.down.first.id+";\n";
-                    rela+=aux.down.graphDown(p);
+                    rela+=aux.down.graphDownBook(p);
                 }
 
                 aux=aux.next;
@@ -265,7 +281,7 @@ class DoubleCircularList{
         doteCode+=label
         doteCode+="}"
 
-        //console.log(doteCode)
+        console.log(doteCode)
 
         d3.select('#Circular').graphviz()
         .width(1600)

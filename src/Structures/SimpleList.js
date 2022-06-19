@@ -1,4 +1,6 @@
 import Node from "../Objects/Node.js";
+import Solicitud from "../Objects/Solicitud.js";
+
 class SimpleList{
    
     constructor(){
@@ -157,6 +159,65 @@ class SimpleList{
     }
 
 
+    buyBook(nombre,cantidad,usuario,cola){
+        var aux=this.first;
+        var temp=usuario.down;
+        console.log(usuario.value.name)
+        console.log(aux.value.nameBook)
+        while(aux!=null){
+            //encuentro el libro
+            
+            console.log("actual: "+aux.value.nameBook+" buscado: "+nombre)
+            if(aux.value.nameBook==nombre){
+                console.log("se encontró")
+
+                //si la cantidad que quiere comprar es menor que la cantidad disponible
+                if(aux.value.quantity>=cantidad){
+                    aux.value.quantity=aux.value.quantity-cantidad;
+                    //ingreso los libros a la lista de libros
+                    var n=1
+                    while(n<=cantidad){
+                        temp.addNewD(aux.value)
+                        n++
+                    }
+
+                }//si la cantidad que quiere comprar es mayor que la cantidad disponible
+                else if(aux.value.quantity<cantidad){
+                   
+
+
+
+
+
+                    var pendiente=cantidad-aux.value.quantity;
+                    //inserto los pendientes en la cola de disponibilidad
+                    var nueva=new Solicitud(usuario.value.name,aux.value.nameBook,pendiente)
+                    cola.enqueue(nueva);
+                    cola.graph();
+
+                    if(aux.value.quantity>0){
+                        var n=1
+                        while(aux.value.quantity>0){
+                            temp.addNewD(aux.value)
+                            aux.value.quantity--;
+                            
+                        }
+                    }
+
+                    
+                }
+
+
+
+                return 0
+            }
+            aux=aux.next;
+        }
+        alert("No se encontró")
+
+
+    }
+
     graphPila(pila,name){
         var text="digraph pila{\n"
         text+="rankdir=RL;\n"
@@ -244,6 +305,31 @@ class SimpleList{
         text+=labels
         text+=rela
         
+        return text
+
+    }
+    
+    graphDownBook(padre){
+        var text=" "
+        var aux=this.first
+        var rela=""
+        var labels=""
+        
+        if (this.first!=null){
+
+            while(aux.down!=null){
+                rela+="    nodeD"+aux.id+" -> nodeD"+aux.down.id+";\n"
+                labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.value.nameBook+"\", weight="+padre+" ,group="+padre+"];\n"
+                aux=aux.down
+            }
+        }
+        labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.value.nameBook+"\",  weight="+padre+" , group="+padre+"];\n"
+        
+        text+=labels
+        text+=rela
+        
+
+
         return text
 
     }

@@ -65,13 +65,14 @@ class Queue{
         text+="}"
         
         console.log(text)
-        d3.select('#lienzo').graphviz()
+        d3.select('#colaDisponible').graphviz()
             .width(1600)
             .height(600)
             .renderDot(text);
             
     }
 }
+export default Queue;
 
 /*
 var pedidos=new Queue()

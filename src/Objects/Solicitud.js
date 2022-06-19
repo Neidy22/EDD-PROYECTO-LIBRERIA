@@ -6,9 +6,9 @@ class Solicitud{
     }
 
     getString(){
-        var text=this.cliente
-        text+=this.nombreBook
-        text+=this.cantidad
+        var text="Cliente: "+this.cliente+", "
+        text+="Libro: "+this.nombreBook+", "
+        text+="Cantidad: "+this.cantidad+". "
         return text
     }
 }

@@ -25,7 +25,7 @@ class SimpleList{
 
     addNewOrdered(data){
         var nuevo=new Node(data)
-        nuevo.id=data
+        nuevo.id=data.quantity
         if(this.first==null){
             this.first=nuevo
         }else if (nuevo.id<this.first.id){
@@ -138,8 +138,64 @@ class SimpleList{
     }
 
 
+    search(nombre){
+        const cont=document.getElementById("books");
+        const cont2=document.getElementById("stackBook");
+        var aux=this.first;
+        while(aux!=null){   
+            if(aux.value.nameBook==nombre){
+                alert("Libro encontrado");
+                var nom="Ejemplares: "+aux.value.nameBook+" Cantidad:"+aux.value.quantity;
+                cont.insertAdjacentElement("beforeend",cont2)
+                this.graphPila(aux.value.pila,nom);
+            }
+
+            aux=aux.next;
+        }
+        //alert("Libro no encontrado");
+
+    }
 
 
+    graphPila(pila,name){
+        var text="digraph pila{\n"
+        text+="rankdir=RL;\n"
+        text+="ranksep=0;\n"
+        text+="nodesep=0;\n"
+        text+="node [shape=Mrecord];\n"
+        text+="label=\""+name+"\";\n"
+        var aux=pila.peak;
+
+        if(pila.peak==null){
+            text+="    struct1 [label=\"<f0>Vacía\"];\n";
+        }else{
+            var n=0
+            text+="    struct1 [label=\"<f"+n+">"+aux.id+""
+            aux=aux.down
+            while(aux!=null){
+                n++
+               
+                text+="|<f"+n+">"+aux.id+""
+                aux=aux.down
+                
+            }
+            text+="\"];\n"
+    
+            
+
+        }
+        text+="}\n"
+       
+
+  
+
+        //console.log(text)
+        d3.select('#stackBook').graphviz()
+            .width(1600)
+            .height(600)
+            .renderDot(text);
+
+    }
 
     graphR(){
         var text=" "

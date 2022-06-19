@@ -276,6 +276,31 @@ class OrthogonalMatrix{
         }
     }
 
+    search(nombre){
+        const cont=document.getElementById("infoStack");
+        var aux=this.rows.first;
+        //recorro las filas
+        while(aux!=null){
+            var aux2=aux;
+            //rocorro las columnas
+            while(aux2!=null){
+
+                if(aux2.value.nameBook==nombre){
+                    alert("Libro encontrado");
+                    const nom=document.createElement("h2");
+                    nom.textContent="Ejemplares: "+aux.value.nameBook+" Cantidad:"+aux.value.quantity;
+                    cont.insertAdjacentElement("beforeend",nom);
+                    aux.pila.graph();
+                }
+
+                aux2=aux2.next;
+            }
+
+            aux=aux.down;
+        }
+
+    }
+
 
     /*
     createLibreraFantasy(){

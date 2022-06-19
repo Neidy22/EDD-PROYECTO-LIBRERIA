@@ -278,7 +278,7 @@ button{
 /*-----------------------------------
             PILA DE UN LIBRO
 -------------------------------------*/
-#stack{
+#infoStack{
     background-color: azure;
     width: 50%;
     margin-top: 200px;
@@ -286,8 +286,12 @@ button{
     position: absolute;
     left: 40px;
     top:40px;
-    display:none;
+    /*display:none;*/
 }
+
+/*-----------------------------------
+            AUTORES
+-------------------------------------*/
 
 #autorBio{
    

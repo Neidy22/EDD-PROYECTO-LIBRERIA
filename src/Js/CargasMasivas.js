@@ -224,6 +224,21 @@ import Node from "../Objects/Node.js";
 
      
     }
+
+    const libroBuscado=document.getElementById("buscarLibro");
+    
+    libroBuscado.onsubmit = function(e){
+   
+      e.preventDefault();
+      const nombre = document.getElementById("book-name").value;
+      console.log("clickeado el buscar libro")
+      libroBuscado.reset();
+      //console.log(user);
+      //console.log(pass);
+      books.search(nombre);
+      //matrizO.search(nombre);
+    
+    }
    
 
  

@@ -265,7 +265,8 @@ class DoubleCircularList{
                 label+="    node"+aux.value.dpi+"[label=\""+aux.value.name+"\"];\n"
                 //verifico si tiene libros comprados
                 if(aux.down.first!=null){
-                    rela+="   node"+aux.value.dpi+" -> nodeD"+aux.down.first.id+";\n";
+                    var name=aux.down.first.id+"P"+p;
+                    rela+="   node"+aux.value.dpi+" -> nodeD"+name+";\n";
                     rela+=aux.down.graphDownBook(p);
                 }
 

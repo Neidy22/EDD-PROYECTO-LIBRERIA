@@ -162,14 +162,14 @@ class SimpleList{
     buyBook(nombre,cantidad,usuario,cola){
         var aux=this.first;
         var temp=usuario.down;
-        console.log(usuario.value.name)
-        console.log(aux.value.nameBook)
+        //console.log(usuario.value.name)
+        //console.log(aux.value.nameBook)
         while(aux!=null){
             //encuentro el libro
             
-            console.log("actual: "+aux.value.nameBook+" buscado: "+nombre)
+            //console.log("actual: "+aux.value.nameBook+" buscado: "+nombre)
             if(aux.value.nameBook==nombre){
-                console.log("se encontró")
+                //console.log("se encontró")
 
                 //si la cantidad que quiere comprar es menor que la cantidad disponible
                 if(aux.value.quantity>=cantidad){
@@ -200,6 +200,7 @@ class SimpleList{
                         while(aux.value.quantity>0){
                             temp.addNewD(aux.value)
                             aux.value.quantity--;
+                            aux.value.pila.pop();
                             
                         }
                     }

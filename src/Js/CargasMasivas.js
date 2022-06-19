@@ -178,6 +178,11 @@ import Node from "../Objects/Node.js";
             showHide('block',document.getElementsByClassName("menuAdmin"));
             showHideSeccion(document.getElementsByClassName("seccionAdmin"),'top10');
           
+        }else{
+            showHide('none',document.getElementsByClassName("menuPrincipal"));
+            showHide('block',document.getElementsByClassName("menuClient"));
+            showHideSeccion(document.getElementsByClassName("seccionCliente"),'top10');
+
         }
       }
   

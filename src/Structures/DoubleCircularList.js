@@ -249,20 +249,24 @@ class DoubleCircularList{
 
     graph(){
         var doteCode="digraph ListaDobleCircular {\n";
-        doteCode+="rankdir=LR;\n";
+        doteCode+="rankdir=TB;\n";
         doteCode+="     fontname=\"Forte\";\n"
         doteCode+="     fontsize=30;\n"
+        doteCode+="     nodesep=0.6;\n"
         doteCode+="node[shape=box, fontsize=14];\n";
 
         var aux=this.first
         var rela=""
         var label=""
+        var rank=""
         var p=0
         if(this.first!=null){
-            do{
 
+            rank+="{rank = same;"
+            do{
+                rank+="\"node"+aux.value.dpi+"\";"
                 rela+="   node"+aux.value.dpi+" -> node"+aux.next.value.dpi+"[dir=both];\n"
-                label+="    node"+aux.value.dpi+"[label=\""+aux.value.name+"\"];\n"
+                label+="    node"+aux.value.dpi+"[label=\""+aux.value.name+"\" , weight="+p+", group="+p+"];\n"
                 //verifico si tiene libros comprados
                 if(aux.down.first!=null){
                     var name=aux.down.first.id+"P"+p;
@@ -274,10 +278,10 @@ class DoubleCircularList{
                 p++;
     
             }while(aux!=this.first)
-    
+            rank+="}\n"
 
         }
-
+        doteCode+=rank
         doteCode+=rela
         doteCode+=label
         doteCode+="}"

@@ -178,6 +178,8 @@ class SimpleList{
                     var n=1
                     while(n<=cantidad){
                         temp.addNewD(aux.value)
+                        //aux.value.quantity--;
+                        aux.value.pila.pop();
                         n++
                     }
 
@@ -319,12 +321,15 @@ class SimpleList{
         if (this.first!=null){
 
             while(aux.down!=null){
-                rela+="    nodeD"+aux.id+" -> nodeD"+aux.down.id+";\n"
-                labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.value.nameBook+"\", weight="+padre+" ,group="+padre+"];\n"
+                var name=aux.id+"P"+padre
+                var name2=aux.down.id+"P"+padre
+                rela+="    nodeD"+name+" -> nodeD"+name2+";\n"
+                labels+="    nodeD"+name+" [shape=box, label=\""+aux.value.nameBook+"\", weight="+padre+" ,group="+padre+"];\n"
                 aux=aux.down
             }
         }
-        labels+="    nodeD"+aux.id+" [shape=box, label=\""+aux.value.nameBook+"\",  weight="+padre+" , group="+padre+"];\n"
+        var name=aux.id+"P"+padre
+        labels+="    nodeD"+name+" [shape=box, label=\""+aux.value.nameBook+"\",  weight="+padre+" , group="+padre+"];\n"
         
         text+=labels
         text+=rela

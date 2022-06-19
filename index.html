@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <LINK REL=StyleSheet HREF="src/Styles/main.css" TYPE="text/css" MEDIA=screen>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="StyleSheet">
+    <title>HOME</title>
+    
+</head>
+<body>
+    <!--
+        <div id="Dispersa" background-color="black"></div>
+        <div id="lienzo"></div>
+    -->
+    <div id="main-container">
+        <header>
+            <nav>
+                <ul class="menuPrincipal" id="menu1">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe88a;</span>Home</a></li>
+                    </ul>  
+                    <ul>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe8b6;</span>Search</a></li>
+                        <li><a href="#" class="link"><span class="material-icons">&#xe8cc;</span>Cart</a></li>
+                        <li><a href="#" class="link " id="singin"><span class="material-icons">&#xe853;</span>Sing In</a>
+                            
+                        </li>
+                    </ul>
+                   
+                    <form  class="formulario" id="formulario">
+                        <h1>LOGIN</h1><br>
+                        <h3>¡Inicia sesión y descubre todo lo nuevo!</h3>
+                        <label for="username">Usuario:    </label>
+                        <input id="username" type="text" name="nombreUsuario"><br>
+                        <label for="pass">Contraseña:    </label>
+                        <input id="pass" type="password"><br>
+                        <button type="submit" id="login" >Iniciar Sesión</button><br>
+                        <h5>¿Aún no tienes una cuenta? <a href="#">Registrarse</a></h5>
+                    </form>
+                </ul>
+
+                <ul class="menuClient menuAdmin" id="menu3">
+                    <ul >
+                        <li><a href="#">Logo</a></li>
+                        <li><a href="#" class="link" id="activar-home"><span class="material-icons">&#xe88a;</span>Home</a></li>
+                        <li><a href="#" class="link" id="activar-libreras"><span class="material-icons">&#xe02f;</span>Libreras</a></li>
+                        <li><a href="#" class="link" id="activar-libros"><span class="material-icons">&#xe865;</span>Libros</a></li>
+                        <li><a href="#" class="link" id="activar-autores"><span class="material-icons">&#xf8a6;</span>Autores</a></li>
+                    </ul>
+                        
+                    <ul>
+                        <li><a href="#" class="link" id="activar-carrito"><span class="material-icons">&#xe8cc;</span>Cart</a></li>
+                        <li><a href="#" class="link"id="activar-salida">Sing Out</a></li>
+                    </ul>
+                </ul>
+                
+                <ul class="menuAdmin" id="menu2">
+                    
+                    <li><a href="#" class="link" id="activar-masivas">Cargas Masivas</a></li>
+                    <li><a href="#" class="link" id="activar-estructuras">Estructuras</a></li>
+                      
+                </ul>
+
+               
+            </nav>
+        </header>
+        
+        <!-- Para Home -->
+        <section class="seccionAdmin seccionCliente menuPrincipal" id="top10">
+            <h1>TOP 10</h1>
+            <h2>Revisa el Top 10 de clientes</h2>
+            <div id="sliderTop">
+                <div class="controls">
+                    <button id="prev">
+                        <span class="material-icons">&#xe5e0;</span>
+                    </button>
+                    <button id="next">
+                        <span class="material-icons">&#xe5e1;</span>
+                    </button>
+                </div>
+                <div id="top-container"></div>
+            </div>
+        </section>
+        <section class="menuPrincipal" id="about"></section>
+        
+
+        <!--Para menu Admin-->
+        <section class="seccionAdmin menuAdmin" id="masivas">
+            <div class="masivas-container">
+                <h2>Carga Masiva de Autores</h2>
+                <input type="file" name="inputFile" id="cmAutors">
+                <br>
+            </div>
+            <div class="masivas-container">
+                <h2>Carga Masiva de Libros</h2>
+                <input type="file" name="inputFile" id="cmBook">
+                <br>
+            </div>
+            <div class="masivas-container"> 
+                <h2>Carga Masiva de Usuarios</h2>
+                <input type="file" name="inputFile" id="cmUser">
+                <br>
+            </div>
+            
+           
+            <!--<pre id="output">Aqui va la info</pre>   -->
+            
+            
+        </section>
+        <section  class="seccionAdmin menuAdmin" id="estructuras">
+            <!--
+            <h1>Matriz Ortogonal - Librera Fantasy</h1>
+            <div class="grafo" id="Ortogonal"></div>
+            <br>
+            <h1>Matriz Dispersa - Librera Thriller</h1>
+            <div class="grafo" id="Dispersa"></div>
+            <br>
+             <h1>Árbol Binario de Búsqueda - Autores</h1>
+            <div class="grafo" id="arbol"></div>
+            <br>
+            -->
+           
+           
+            <h1>Lista de Listas Doble Circular - Usuarios</h1>
+            <div class="grafo" id="Circular"></div>
+            <br>
+            <h1>Cola de Disponibilidad</h1>
+            <div class="grafo" id="colaDisponible"></div>
+            <h1>Lista Doble Enlazada - Top 10</h1>
+            <div class="grafo" id="top10"></div>
+        </section>
+       
+        
+        <!--Para menu Cliente-->
+        <section class="seccionAdmin menuAdmin" id="librera"><h1>LIBRERAS</h1>
+            <section class="librera-container" id="fantasy"><h2>Fantasy</h2>
+                <h1>Matriz Ortogonal - Librera Fantasy</h1>
+                <div class="grafo" id="Ortogonal"></div>
+                <br>
+            </section>
+            
+            <section class="librera-container" id="thriller"><h2>Thriller</h2>
+                <h1>Matriz Dispersa - Librera Thriller</h1>
+                <div class="grafo" id="Dispersa"></div>
+                <br>
+            </section>
+            
+
+
+            
+            
+            
+
+        </section>
+
+        
+        <section class="seccionAdmin menuAdmin" id="books"><h1>LIBROS</h1>
+            
+            <div id="stackBook"></div>
+            <form  id="buscarLibro"><h1>Buscar Libro</h1>
+                <label for="book-name">Nombre del libro:</label>
+                <input id="book-name" type="text" name="book-Nom"><br>
+                <button type="submit" id="searchBook" >Buscar</button><br>
+            </form>
+        </section>
+
+        <section class="seccionAdmin menuAdmin" id="autors">
+            <h1>Árbol Binario de Búsqueda - Autores</h1>
+
+            <div id="autorBio"></div>
+            <section id="autors-container"></section>
+            <div class="grafo" id="arbol"></div>
+            <form  id="buscarAutor"><h1>Buscar Autor</h1>
+                
+                <label for="autor-name">Nombre de autor:</label>
+                <input id="autor-name" type="text" name="autorN"><br>
+                <button type="submit" id="search" >Buscar</button><br>
+            
+                
+            </form>
+            <br>
+        </section>
+
+        <section class="seccionAdmin menuAdmin" id="carrito">
+            <h1>Carrito de compras</h1>
+            <form  id="comprarLibro"><h1>Comprar Libro</h1>
+                <label for="bookname">Nombre del libro:</label>
+                <input id="bookname" type="text" name="bookNom"><br>
+                <label for="cantidadB">Cantidad:</label>
+                <input id="cantidadB" type="text" name="cantidadLi"><br>
+                <button type="submit" id="buyBook" >Comprar</button><br>
+            </form>
+
+        </section>
+
+    </div>
+    
+    
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <script  type="module"  src="src/Js/home.js"></script>
+    <script type="module" src="src/Js/CargasMasivas.js"></script>
+    
+    <script src="noModule.js" nomodule></script>
+    
+</body>
+</html>

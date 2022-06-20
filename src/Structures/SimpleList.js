@@ -178,6 +178,7 @@ class SimpleList{
                     var n=1
                     while(n<=cantidad){
                         temp.addNewD(aux.value)
+                        usuario.value.cantidad++;
                         //aux.value.quantity--;
                         aux.value.pila.pop();
                         n++
@@ -186,10 +187,6 @@ class SimpleList{
                 }//si la cantidad que quiere comprar es mayor que la cantidad disponible
                 else if(aux.value.quantity<cantidad){
                    
-
-
-
-
 
                     var pendiente=cantidad-aux.value.quantity;
                     //inserto los pendientes en la cola de disponibilidad
@@ -201,6 +198,7 @@ class SimpleList{
                         var n=1
                         while(aux.value.quantity>0){
                             temp.addNewD(aux.value)
+                            usuario.value.cantidad++;
                             aux.value.quantity--;
                             aux.value.pila.pop();
                             

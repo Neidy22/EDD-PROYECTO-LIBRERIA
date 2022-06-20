@@ -13,7 +13,7 @@ class DoubleList{
         if(this.first==null){
             this.first=nuevo
             
-        }else if (nuevo.data.cantidad>this.first.data.cantidad){
+        }else if (nuevo.value.cantidad>this.first.value.cantidad){
             //si la cantidad del nuevo nodo es mayor a la cantidad de la cabecera de la lista, inserto al inicio
             this.first.previous=nuevo
             nuevo.next=this.first
@@ -21,18 +21,18 @@ class DoubleList{
         }else{
             var aux=this.first
             var prev=this.first
-            while(nuevo.data.cantidad<aux.data.cantidad && aux.next!=null){
+            while(nuevo.value.cantidad<aux.value.cantidad && aux.next!=null){
                 //recorro la lista doble siempre que la cantidad del nuevo sea menor que la cantidad del nodo actual y no 
                 //sea el final de la lista
                 prev=aux
                 aux=aux.next
             }
 
-            if(nuevo.data.cantidad<aux.data.cantidad){
+            if(nuevo.value.cantidad<aux.value.cantidad){
                 //si la cantidad  del nuevo es menor que la cantidad del actual, lo inserto al final
                 aux.next=nuevo
                 nuevo.previous=aux
-            }else if(nuevo.data.cantidad>aux.data.cantidad){
+            }else if(nuevo.value.cantidad>aux.value.cantidad){
                 //si la cantidad del nuevo es mayor que el actual, ingreso el nuevo antes que el actual
                 nuevo.next=aux
                 nuevo.previous=aux.previous
@@ -133,19 +133,25 @@ class DoubleList{
         var relas=""
         var labels=""
         var aux=this.first
+        var n=1
+
         while(aux.next!=null){
-            relas+="    node"+aux.data.cantidad+" -> node"+aux.next.data.cantidad+"[dir=both];\n"
-            labels+="    node"+aux.data.cantidad+" [label=\""+aux.data.cantidad+"\"];\n"
+            var name="No."+n+"\n"+aux.value.name+""
+            relas+="    node"+aux.value.dpi+" -> node"+aux.next.value.dpi+"[dir=both];\n"
+            labels+="    node"+aux.value.dpi+" [label=\""+name+"\"];\n"
             aux=aux.next
+            n++
         }
-        labels+="    node"+aux.data.cantidad+" [label=\""+aux.data.cantidad+"\"];\n"
+
+        var name="No."+n+"\n"+aux.value.name+""
+        labels+="    node"+aux.value.dpi+" [label=\""+name+"\"];\n"
         
         doteCode+=relas
         doteCode+=labels
 
         doteCode+="    }\n"
         console.log(doteCode)
-        d3.select('#lienzo').graphviz()
+        d3.select('#top10').graphviz()
             .width(1600)
             .height(600)
             .renderDot(doteCode);
@@ -192,12 +198,6 @@ class DoubleList{
 
         
     }
-
-    
-
-    
-
-
 
     
     graphTB(){

@@ -8,6 +8,7 @@ import Book from "../Objects/Book.js";
 import User from "../Objects/User.js";
 import SimpleList from "../Structures/SimpleList.js";
 import Node from "../Objects/Node.js";
+import DoubleList from "../Structures/DoubleList.js";
 
     const matrizO=new OrthogonalMatrix()
     const matrizD=new SparseMatrix()
@@ -15,6 +16,7 @@ import Node from "../Objects/Node.js";
     const usuarios=new DoubleCircularList()
     const books=new SimpleList()
     const queue=new Queue();
+    let top=new DoubleList();
     var usuario;
     
 
@@ -232,6 +234,10 @@ import Node from "../Objects/Node.js";
      
     }
 
+    /*----------------------------------
+        Codigo para Buscar un libro
+    ------------------------------------*/
+
     const libroBuscado=document.getElementById("buscarLibro");
     
     libroBuscado.onsubmit = function(e){
@@ -247,6 +253,9 @@ import Node from "../Objects/Node.js";
     
     }
    
+    /*----------------------------------
+        Codigo para comprar libros
+    ------------------------------------*/
     const comprarLibro=document.getElementById("comprarLibro");
     
     comprarLibro.onsubmit = function(e){
@@ -262,13 +271,38 @@ import Node from "../Objects/Node.js";
       usuarios.graph()
 
       console.log("Se compró")
+
+      insertTop();
       
     
     
     }
 
- 
+    //función para insertar en el top al usuario que compro
+    function insertTop(){
+      top.addNewDesOrdered(usuario.value)
+      
+      top.graph();
+      generarDivs();
+    }
+    //función para generar los divs del top
     
+    function generarDivs(){
+      
+      var aux=top.first
+      var n=1
+      while(aux!=null){
+
+        var div=document.getElementById(n);
+        div.textContent="No. "+n+"  "+aux.value.name;
+
+        
+
+        aux=aux.next
+        n++;
+      }
+
+    }
 
 
 

@@ -330,3 +330,58 @@ button{
     background-color: aquamarine;
     
 }
+
+
+#top-container{
+    width:100%;
+    height:350px;
+    padding:0;
+   
+    text-align: center;
+    float:left;
+    border-radius: 5%;
+    border-width: 2px;
+
+    background-color:aqua;
+}
+
+
+
+.cliente-top{
+    width:18%;
+    height: 15px;
+    padding:5%;
+    margin-left:20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    float:left;
+    border-radius: 5%;
+    border-width: 2px;
+    background-color:burlywood;
+    background-image: url(../Styles/img/cup.png);
+    background-size: cover;
+    
+    color:burlywood;
+    
+}
+
+.cliente-top:hover{
+    width:15%;
+    height: 15px;;
+    padding:5%;
+    margin-left:5%;
+    text-align: center;
+    background-size: 100% 100%;
+    background-color: aquamarine;
+    background-image: none;
+    color:black;
+
+}
+
+.top-medal{
+    width: 80%;
+    height: 5px;
+    margin-top:1px;
+
+}
